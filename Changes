@@ -2,6 +2,11 @@
 
 Revision history for Perl extension Lingua::Zompist::Verdurian.
 
+0.06  Sun 2002-04-21
+	- Changed the future to insert the -i- only for Cl and
+	Cr, not for other second consonants. Added one test
+	for this.
+
 0.05  Thu 2002-04-11
 	- Slight doc tweaks (it still thought it was version
 	0.03, and 'esneu' was still in the docs).

@@ -4,7 +4,7 @@
 
 #########################
 
-use Test::More tests => 120;
+use Test::More tests => 126;
 use Carp;
 
 use Lingua::Zompist::Verdurian 'ctanec';
@@ -45,6 +45,10 @@ form_ok('aaazir', ctanec('aaazir'), [ qw( aaadretu aaadreteu aaadrete aaadretum 
 
 form_ok('dan', ctanec('dan'), [ qw( domai domei dome domam domo domu ) ]);
 form_ok('kies', ctanec('kies'), [ qw( kaimai kaimei kaime kaimam kaimo kaimu ) ]);
+
+# Test that syllables don't get added for CC where the second
+# consonant is not 'l' or 'r'
+form_ok('chamzan', ctanec('chamzan'), [ qw( chamzmai chamzmei chamzme chamzmam chamzmo chamzmu ) ]);
 
 # I think 'fassec' should conjugate like this:
 form_ok('fassec', ctanec('fassec'), [ qw( fasstao fassteo fasste fasstom fassto fasstu ) ]);

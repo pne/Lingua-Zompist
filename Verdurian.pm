@@ -32,7 +32,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 	
 );
-$VERSION = '0.05';
+$VERSION = '0.06';
 
 my %verb = (demeric => \&demeric,
             scrifel => \&scrifel,
@@ -254,7 +254,7 @@ sub ctanec {
 
   return $ctanec{$verb} if exists $ctanec{$verb};
 
-  if($stem =~ s/($cons$cons)([ea]n|[ie]r|ec)$/$1i$2/) {
+  if($stem =~ s/($cons[lr])([ea]n|[ie]r|ec)$/$1i$2/) {
     $add = 1;
   }
 
@@ -667,8 +667,8 @@ Lingua::Zompist::Verdurian - Inflect Verdurian nouns, verbs, and adjectives
 
 =head1 VERSION
 
-This document refers to version 0.05 of Lingua::Zompist::Verdurian, released
-on 2002-04-11.
+This document refers to version 0.06 of Lingua::Zompist::Verdurian, released
+on 2002-04-21.
 
 =head1 SYNOPSIS
 
