@@ -1,4 +1,4 @@
-Lingua/Zompist/Verdurian version 0.03
+Lingua/Zompist/Verdurian version 0.04
 =====================================
 
 Lingua::Zompist::Verdurian is a module which allows you to inflect Verdurian
@@ -11,10 +11,13 @@ one for each tense or mood and another for the participles.
 
 CHANGES SINCE THE LAST VERSION
 
-Minor documentation nits (including documenting the fact that "kies" now
-has a participle).
+Changed 3rd person plural past of 'esan' from 'esneu' to 'esnu'
 
-There were no changes to code or tests in this version.
+Changed handling of verbs which insert an -i- in the past tense
+
+More tests for vers which need an inserted -i-
+
+Made 'didha' masculine
 
 For changes in previous versions, see the file "Changes".
 
@@ -35,7 +38,7 @@ This module requires these other modules and libraries:
 
 COPYRIGHT AND LICENCE
 
-Copyright (C) 2001 by Philip Newton.  All rights reserved.
+Copyright (C) 2001, 2002 by Philip Newton.  All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
@@ -50,7 +53,7 @@ modification, are permitted provided that the following conditions are met:
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE FOR ANY
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY
 DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
 (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
 LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON

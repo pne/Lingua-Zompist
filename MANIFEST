@@ -1,6 +1,7 @@
 Changes
 Makefile.PL
 MANIFEST
+MANIFEST.SKIP
 README
 Verdurian.pm
 t/01_base.t

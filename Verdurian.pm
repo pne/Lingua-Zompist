@@ -32,7 +32,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 	
 );
-$VERSION = '0.03';
+$VERSION = '0.04';
 
 my %verb = (demeric => \&demeric,
             scrifel => \&scrifel,
@@ -62,12 +62,12 @@ my %acc = (
   'a' => 'á',
   'e' => 'é',
   'i' => 'í',
-  'o' => 'í',
+  'o' => 'ó',
   'u' => 'ú',
   'A' => 'Á',
   'E' => 'É',
   'I' => 'Í',
-  'O' => 'Í',
+  'O' => 'Ó',
   'U' => 'Ú',
 );
 
@@ -125,7 +125,7 @@ sub demeric {
 }
 
 my %scrifel = (
-  esan      => [ qw( fuai fuei fue/esne fuam fuo fueu/esneu ) ],
+  esan      => [ qw( fuai fuei fue/esne fuam fuo fueu/esnu ) ],
   fassec    => [ map "fashsh$_", @{$endings{C}} ],
   dan       => [ map "don$_",    @{$endings{N}} ],
   kies      => [ map "kaiv$_",   @{$endings{N}} ],
@@ -140,7 +140,7 @@ sub scrifel {
 
   return $scrifel{$verb} if exists $scrifel{$verb};
 
-  if($stem =~ s/($cons$cons)([ea]n|[ie]r|ec)$/$1i$2/) {
+  if($stem =~ s/($cons[lr])([ea]n|[ie]r|ec)$/$1i$2/) {
     $add = 1;
   }
 
@@ -206,7 +206,7 @@ sub izhcrifel {
 
   return $izhcrifel{$verb} if exists $izhcrifel{$verb};
 
-  if($stem =~ s/($cons$cons)([ea]n|[ie]r|ec)$/$1i$2/) {
+  if($stem =~ s/($cons[lr])([ea]n|[ie]r|ec)$/$1i$2/) {
     $add = 1;
   }
 
@@ -430,6 +430,7 @@ my %masc = (
   esta => 1,
   hezhiosa => 1,
   rhena => 1,
+  didha => 1,
 );
 
 sub noun {
@@ -894,7 +895,9 @@ change.
 
 =head1 SEE ALSO
 
-L<Lingua::Zompist::Kebreni>, http://www.zompist.com/verdurian.htm,
+L<Lingua::Zompist::Kebreni>,
+L<Lingua::Zompist::Cadhinor>,
+http://www.zompist.com/verdurian.htm,
 http://www.zompist.com/morphology.htm
 
 =head1 AUTHOR
@@ -903,7 +906,7 @@ Philip Newton, E<lt>pne@cpan.orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2001 by Philip Newton.  All rights reserved.
+Copyright (C) 2001, 2002 by Philip Newton.  All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
@@ -926,7 +929,7 @@ other materials provided with the distribution.
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE FOR ANY
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY
 DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
 (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
 LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
