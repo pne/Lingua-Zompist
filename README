@@ -1,16 +1,24 @@
-Lingua/Zompist/Kebreni version 0.4
-==================================
+Lingua/Zompist/Kebreni version 0.41
+===================================
 
-The README is used to introduce the module and provide instructions on
-how to install the module, any machine dependencies it may have (for
-example C compilers and installed libraries) and any other information
-that should be provided before the module is installed.
+This module is for inflecting Kebreni verbs. Kebreni is a language
+spoken on the fictional world of Almea, which was created by Mark
+Rosenfelder. It's got a rather "interesting" verbal morphology.
 
-A README file is required for CPAN modules since CPAN extracts the
-README file from a module distribution so that people browsing the
-archive can use it get an idea of the modules uses. It is usually a
-good idea to provide version information here so that people can
-decide whether fixes for the module are worth downloading.
+On a whim, and partly to check the verbs on this website, I wrote
+this module. Perhaps it will be useful to other conlangers as well,
+specifically those interested in the languages of Almea.
+
+Kebreni is documented at http://www.zompist.com/kebreni.htm .
+
+Lingua::Zompist::Kebreni is an object-oriented module; to use it,
+create a Lingua::Zompist::Kebreni object and then call methods such
+as ->benefactive or ->polite on it to inflect the verb.
+
+Version 0.41 is only a cosmetic release (I had forgotten to update
+the README file and actually put useful information into it.)
+
+Comments, feedback, and flames to pne@cpan.org.
 
 INSTALLATION
 
@@ -25,14 +33,11 @@ DEPENDENCIES
 
 This module requires these other modules and libraries:
 
-  blah blah blah
+  (none)
 
 COPYRIGHT AND LICENCE
-
-Put the correct copyright and licence information here.
 
 Copyright (C) 2001 Philip Newton
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 
-

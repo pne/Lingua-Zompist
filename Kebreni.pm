@@ -10,6 +10,8 @@ require Exporter;
 
 use vars qw($VERSION @ISA @EXPORT_OK @EXPORT %EXPORT_TAGS);
 
+$VERSION = '0.41';
+
 @ISA = qw(Exporter);
 
 use overload '""' => 'to_string',
@@ -42,8 +44,6 @@ $EXPORT_TAGS{'all'} = $EXPORT_TAGS{'flags'};
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
 @EXPORT = ();
-
-$VERSION = '0.4';
 
 
 # Constructor. This takes a string and returns a Lingua::Zompist::Kebreni
