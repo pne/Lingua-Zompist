@@ -21,11 +21,11 @@ sub form_ok {
     is($is->[5], $should->[3], "III.pl. of $verb");
 }
 
-form_ok('LIUBEC', bubefel('LIUBEC'), [ qw( LIUBE LIUBUAS LIUBEL LIUBUANT ) ]);
-form_ok('LAUDAN', bubefel('LAUDAN'), [ qw( LAUDI LAUDUAT LAUDIL LAUDUANT ) ]);
-form_ok('LEILEN', bubefel('LEILEN'), [ qw( LEILI LEILUAT LEILIL LEILUANT ) ]);
+form_ok('DUMEC',  bubefel('DUMEC' ), [ qw( DUME  DUMUAS  DUMEL  DUMUANT  ) ]);
+form_ok('KEKAN',  bubefel('KEKAN' ), [ qw( KEKI  KEKUAT  KEKIL  KEKUANT  ) ]);
+form_ok('NOMEN',  bubefel('NOMEN' ), [ qw( NOMI  NOMUAT  NOMIL  NOMUANT  ) ]);
 form_ok('CLAGER', bubefel('CLAGER'), [ qw( CLAGU CLAGAS  CLAGUL CLAGANT  ) ]);
-form_ok('NURIR',  bubefel('NURIR' ), [ qw( NURU  NURUAT  NURUL  NURUANT  ) ]);
+form_ok('PARIR',  bubefel('PARIR' ), [ qw( PARU  PARUAT  PARUL  PARUANT  ) ]);
 
 # test general forms
 form_ok('GGGEC',  bubefel('GGGEC' ), [ qw( GGGE  GGGUAS  GGGEL  GGGUANT  ) ]);

@@ -21,19 +21,13 @@ sub form_ok {
     is($is->[5], $should->[5], "III.pl. of $verb");
 }
 
-form_ok('LIUBEC', buscrifel('LIUBEC'), [ qw( LIUBECAO LIUBECEIS LIUBECES LIUBECOM LIUBECOS LIUBECONT ) ]);
-TODO: {
-    local $TODO = "LAUDAN and LEILEN have a different remote stem; native.htm has the paradigm wrong";
-    form_ok('LAUDAN', buscrifel('LAUDAN'), [ qw( LAUDINAI LAUDINES  LAUDINET LAUDINAM LAUDINUS LAUDINONT ) ]);
-    form_ok('LEILEN', buscrifel('LEILEN'), [ qw( LEILINAI LEILINES  LEILINET LEILINEM LEILINES LEILINENT ) ]);
-}
-form_ok('CLAGER', buscrifel('CLAGER'), [ qw( CLAGIRU  CLAGIROS  CLAGIRIS CLAGIRUM CLAGIRUS CLAGIRINT ) ]);
-TODO: {
-    local $TODO = "NURIR has a different remote stem; native.htm has the paradigm wrong";
-    form_ok('NURIR',  buscrifel('NURIR' ), [ qw( NURIRU   NURIROS   NURIRIS  NURIRUM  NURIRUS  NURIRUNT  ) ]);
-}
+form_ok('DUMEC',  buscrifel('DUMEC' ), [ qw( DUMECAO  DUMECEIS  DUMECES  DUMECOM  DUMECOS  DUMECONT  ) ]);
+form_ok('KEKAN',  buscrifel('KEKAN' ), [ qw( KEKINAI  KEKINES   KEKINET  KEKINAM  KEKINUS  KEKINONT  ) ]);
+form_ok('NOMEN',  buscrifel('NOMEN' ), [ qw( NOMINAI  NOMINES   NOMINET  NOMINEM  NOMINES  NOMINENT  ) ]);
+form_ok('CLAGER', buscrifel('CLAGER'), [ qw( CLAGIRU  CLAGIROS  CLAGIRIS CLAGIRUM CLAGIRUS CLAGIRUNT ) ]);
+form_ok('PARIR',  buscrifel('PARIR' ), [ qw( PARIRU   PARIROS   PARIRIS  PARIRUM  PARIRUS  PARIRINT  ) ]);
 
-form_ok('SUDRIR', buscrifel('SUDRIR'), [ qw( SUDDIRU  SUDDIROS  SUDDIRIS SUDDIRUM SUDDIRUS SUDDIRUNT ) ]);
+form_ok('SUDRIR', buscrifel('SUDRIR'), [ qw( SUDDIRU  SUDDIROS  SUDDIRIS SUDDIRUM SUDDIRUS SUDDIRINT ) ]);
 
 form_ok('ESAN',   buscrifel('ESAN'  ), [ qw( ESCAO    ESCEIS    ESCES    ESCOM    ESCOS    ESCONT    ) ]);
 
@@ -41,46 +35,46 @@ form_ok('ESAN',   buscrifel('ESAN'  ), [ qw( ESCAO    ESCEIS    ESCES    ESCOM  
 form_ok('GGGEC',  buscrifel('GGGEC' ), [ qw( GGGECAO  GGGECEIS  GGGECES  GGGECOM  GGGECOS  GGGECONT  ) ]);
 form_ok('GGGAN',  buscrifel('GGGAN' ), [ qw( GGGINAI  GGGINES   GGGINET  GGGINAM  GGGINUS  GGGINONT  ) ]);
 form_ok('GGGEN',  buscrifel('GGGEN' ), [ qw( GGGINAI  GGGINES   GGGINET  GGGINEM  GGGINES  GGGINENT  ) ]);
-form_ok('GGGER',  buscrifel('GGGER' ), [ qw( GGGIRU   GGGIROS   GGGIRIS  GGGIRUM  GGGIRUS  GGGIRINT  ) ]);
-form_ok('GGGIR',  buscrifel('GGGIR' ), [ qw( GGGIRU   GGGIROS   GGGIRIS  GGGIRUM  GGGIRUS  GGGIRUNT  ) ]);
+form_ok('GGGER',  buscrifel('GGGER' ), [ qw( GGGIRU   GGGIROS   GGGIRIS  GGGIRUM  GGGIRUS  GGGIRUNT  ) ]);
+form_ok('GGGIR',  buscrifel('GGGIR' ), [ qw( GGGIRU   GGGIROS   GGGIRIS  GGGIRUM  GGGIRUS  GGGIRINT  ) ]);
 
-form_ok('BBRER',  buscrifel('BBRER' ), [ qw( BBBIRU   BBBIROS   BBBIRIS  BBBIRUM  BBBIRUS  BBBIRINT  ) ]);
-form_ok('PPRER',  buscrifel('PPRER' ), [ qw( PPPIRU   PPPIROS   PPPIRIS  PPPIRUM  PPPIRUS  PPPIRINT  ) ]);
-form_ok('DDRER',  buscrifel('DDRER' ), [ qw( DDDIRU   DDDIROS   DDDIRIS  DDDIRUM  DDDIRUS  DDDIRINT  ) ]);
-form_ok('TTRER',  buscrifel('TTRER' ), [ qw( TTTIRU   TTTIROS   TTTIRIS  TTTIRUM  TTTIRUS  TTTIRINT  ) ]);
-form_ok('GGRER',  buscrifel('GGRER' ), [ qw( GGGIRU   GGGIROS   GGGIRIS  GGGIRUM  GGGIRUS  GGGIRINT  ) ]);
-form_ok('KKRER',  buscrifel('KKRER' ), [ qw( KKKIRU   KKKIROS   KKKIRIS  KKKIRUM  KKKIRUS  KKKIRINT  ) ]);
-form_ok('CCRER',  buscrifel('CCRER' ), [ qw( CCCIRU   CCCIROS   CCCIRIS  CCCIRUM  CCCIRUS  CCCIRINT  ) ]);
-form_ok('FFRER',  buscrifel('FFRER' ), [ qw( FFFIRU   FFFIROS   FFFIRIS  FFFIRUM  FFFIRUS  FFFIRINT  ) ]);
-form_ok('VVRER',  buscrifel('VVRER' ), [ qw( VVVIRU   VVVIROS   VVVIRIS  VVVIRUM  VVVIRUS  VVVIRINT  ) ]);
-form_ok('RRRER',  buscrifel('RRRER' ), [ qw( RRRIRU   RRRIROS   RRRIRIS  RRRIRUM  RRRIRUS  RRRIRINT  ) ]);
-form_ok('SSRER',  buscrifel('SSRER' ), [ qw( SSSIRU   SSSIROS   SSSIRIS  SSSIRUM  SSSIRUS  SSSIRINT  ) ]);
-form_ok('ZZRER',  buscrifel('ZZRER' ), [ qw( ZZZIRU   ZZZIROS   ZZZIRIS  ZZZIRUM  ZZZIRUS  ZZZIRINT  ) ]);
-form_ok('MMRER',  buscrifel('MMRER' ), [ qw( MMMIRU   MMMIROS   MMMIRIS  MMMIRUM  MMMIRUS  MMMIRINT  ) ]);
-form_ok('NNRER',  buscrifel('NNRER' ), [ qw( NNNIRU   NNNIROS   NNNIRIS  NNNIRUM  NNNIRUS  NNNIRINT  ) ]);
-form_ok('LLRER',  buscrifel('LLRER' ), [ qw( LLLIRU   LLLIROS   LLLIRIS  LLLIRUM  LLLIRUS  LLLIRINT  ) ]);
-form_ok('THRER',  buscrifel('THRER' ), [ qw( THTHIRU  THTHIROS  THTHIRIS THTHIRUM THTHIRUS THTHIRINT ) ]);
-form_ok('DHRER',  buscrifel('DHRER' ), [ qw( DHDHIRU  DHDHIROS  DHDHIRIS DHDHIRUM DHDHIRUS DHDHIRINT ) ]);
-form_ok('KHRER',  buscrifel('KHRER' ), [ qw( KHKHIRU  KHKHIROS  KHKHIRIS KHKHIRUM KHKHIRUS KHKHIRINT ) ]);
+form_ok('BBRER',  buscrifel('BBRER' ), [ qw( BBBIRU   BBBIROS   BBBIRIS  BBBIRUM  BBBIRUS  BBBIRUNT  ) ]);
+form_ok('PPRER',  buscrifel('PPRER' ), [ qw( PPPIRU   PPPIROS   PPPIRIS  PPPIRUM  PPPIRUS  PPPIRUNT  ) ]);
+form_ok('DDRER',  buscrifel('DDRER' ), [ qw( DDDIRU   DDDIROS   DDDIRIS  DDDIRUM  DDDIRUS  DDDIRUNT  ) ]);
+form_ok('TTRER',  buscrifel('TTRER' ), [ qw( TTTIRU   TTTIROS   TTTIRIS  TTTIRUM  TTTIRUS  TTTIRUNT  ) ]);
+form_ok('GGRER',  buscrifel('GGRER' ), [ qw( GGGIRU   GGGIROS   GGGIRIS  GGGIRUM  GGGIRUS  GGGIRUNT  ) ]);
+form_ok('KKRER',  buscrifel('KKRER' ), [ qw( KKKIRU   KKKIROS   KKKIRIS  KKKIRUM  KKKIRUS  KKKIRUNT  ) ]);
+form_ok('CCRER',  buscrifel('CCRER' ), [ qw( CCCIRU   CCCIROS   CCCIRIS  CCCIRUM  CCCIRUS  CCCIRUNT  ) ]);
+form_ok('FFRER',  buscrifel('FFRER' ), [ qw( FFFIRU   FFFIROS   FFFIRIS  FFFIRUM  FFFIRUS  FFFIRUNT  ) ]);
+form_ok('VVRER',  buscrifel('VVRER' ), [ qw( VVVIRU   VVVIROS   VVVIRIS  VVVIRUM  VVVIRUS  VVVIRUNT  ) ]);
+form_ok('RRRER',  buscrifel('RRRER' ), [ qw( RRRIRU   RRRIROS   RRRIRIS  RRRIRUM  RRRIRUS  RRRIRUNT  ) ]);
+form_ok('SSRER',  buscrifel('SSRER' ), [ qw( SSSIRU   SSSIROS   SSSIRIS  SSSIRUM  SSSIRUS  SSSIRUNT  ) ]);
+form_ok('ZZRER',  buscrifel('ZZRER' ), [ qw( ZZZIRU   ZZZIROS   ZZZIRIS  ZZZIRUM  ZZZIRUS  ZZZIRUNT  ) ]);
+form_ok('MMRER',  buscrifel('MMRER' ), [ qw( MMMIRU   MMMIROS   MMMIRIS  MMMIRUM  MMMIRUS  MMMIRUNT  ) ]);
+form_ok('NNRER',  buscrifel('NNRER' ), [ qw( NNNIRU   NNNIROS   NNNIRIS  NNNIRUM  NNNIRUS  NNNIRUNT  ) ]);
+form_ok('LLRER',  buscrifel('LLRER' ), [ qw( LLLIRU   LLLIROS   LLLIRIS  LLLIRUM  LLLIRUS  LLLIRUNT  ) ]);
+form_ok('THRER',  buscrifel('THRER' ), [ qw( THTHIRU  THTHIROS  THTHIRIS THTHIRUM THTHIRUS THTHIRUNT ) ]);
+form_ok('DHRER',  buscrifel('DHRER' ), [ qw( DHDHIRU  DHDHIROS  DHDHIRIS DHDHIRUM DHDHIRUS DHDHIRUNT ) ]);
+form_ok('KHRER',  buscrifel('KHRER' ), [ qw( KHKHIRU  KHKHIROS  KHKHIRIS KHKHIRUM KHKHIRUS KHKHIRUNT ) ]);
 
-form_ok('BBRIR',  buscrifel('BBRIR' ), [ qw( BBBIRU   BBBIROS   BBBIRIS  BBBIRUM  BBBIRUS  BBBIRUNT  ) ]);
-form_ok('PPRIR',  buscrifel('PPRIR' ), [ qw( PPPIRU   PPPIROS   PPPIRIS  PPPIRUM  PPPIRUS  PPPIRUNT  ) ]);
-form_ok('DDRIR',  buscrifel('DDRIR' ), [ qw( DDDIRU   DDDIROS   DDDIRIS  DDDIRUM  DDDIRUS  DDDIRUNT  ) ]);
-form_ok('TTRIR',  buscrifel('TTRIR' ), [ qw( TTTIRU   TTTIROS   TTTIRIS  TTTIRUM  TTTIRUS  TTTIRUNT  ) ]);
-form_ok('GGRIR',  buscrifel('GGRIR' ), [ qw( GGGIRU   GGGIROS   GGGIRIS  GGGIRUM  GGGIRUS  GGGIRUNT  ) ]);
-form_ok('KKRIR',  buscrifel('KKRIR' ), [ qw( KKKIRU   KKKIROS   KKKIRIS  KKKIRUM  KKKIRUS  KKKIRUNT  ) ]);
-form_ok('CCRIR',  buscrifel('CCRIR' ), [ qw( CCCIRU   CCCIROS   CCCIRIS  CCCIRUM  CCCIRUS  CCCIRUNT  ) ]);
-form_ok('FFRIR',  buscrifel('FFRIR' ), [ qw( FFFIRU   FFFIROS   FFFIRIS  FFFIRUM  FFFIRUS  FFFIRUNT  ) ]);
-form_ok('VVRIR',  buscrifel('VVRIR' ), [ qw( VVVIRU   VVVIROS   VVVIRIS  VVVIRUM  VVVIRUS  VVVIRUNT  ) ]);
-form_ok('RRRIR',  buscrifel('RRRIR' ), [ qw( RRRIRU   RRRIROS   RRRIRIS  RRRIRUM  RRRIRUS  RRRIRUNT  ) ]);
-form_ok('SSRIR',  buscrifel('SSRIR' ), [ qw( SSSIRU   SSSIROS   SSSIRIS  SSSIRUM  SSSIRUS  SSSIRUNT  ) ]);
-form_ok('ZZRIR',  buscrifel('ZZRIR' ), [ qw( ZZZIRU   ZZZIROS   ZZZIRIS  ZZZIRUM  ZZZIRUS  ZZZIRUNT  ) ]);
-form_ok('MMRIR',  buscrifel('MMRIR' ), [ qw( MMMIRU   MMMIROS   MMMIRIS  MMMIRUM  MMMIRUS  MMMIRUNT  ) ]);
-form_ok('NNRIR',  buscrifel('NNRIR' ), [ qw( NNNIRU   NNNIROS   NNNIRIS  NNNIRUM  NNNIRUS  NNNIRUNT  ) ]);
-form_ok('LLRIR',  buscrifel('LLRIR' ), [ qw( LLLIRU   LLLIROS   LLLIRIS  LLLIRUM  LLLIRUS  LLLIRUNT  ) ]);
-form_ok('THRIR',  buscrifel('THRIR' ), [ qw( THTHIRU  THTHIROS  THTHIRIS THTHIRUM THTHIRUS THTHIRUNT ) ]);
-form_ok('DHRIR',  buscrifel('DHRIR' ), [ qw( DHDHIRU  DHDHIROS  DHDHIRIS DHDHIRUM DHDHIRUS DHDHIRUNT ) ]);
-form_ok('KHRIR',  buscrifel('KHRIR' ), [ qw( KHKHIRU  KHKHIROS  KHKHIRIS KHKHIRUM KHKHIRUS KHKHIRUNT ) ]);
+form_ok('BBRIR',  buscrifel('BBRIR' ), [ qw( BBBIRU   BBBIROS   BBBIRIS  BBBIRUM  BBBIRUS  BBBIRINT  ) ]);
+form_ok('PPRIR',  buscrifel('PPRIR' ), [ qw( PPPIRU   PPPIROS   PPPIRIS  PPPIRUM  PPPIRUS  PPPIRINT  ) ]);
+form_ok('DDRIR',  buscrifel('DDRIR' ), [ qw( DDDIRU   DDDIROS   DDDIRIS  DDDIRUM  DDDIRUS  DDDIRINT  ) ]);
+form_ok('TTRIR',  buscrifel('TTRIR' ), [ qw( TTTIRU   TTTIROS   TTTIRIS  TTTIRUM  TTTIRUS  TTTIRINT  ) ]);
+form_ok('GGRIR',  buscrifel('GGRIR' ), [ qw( GGGIRU   GGGIROS   GGGIRIS  GGGIRUM  GGGIRUS  GGGIRINT  ) ]);
+form_ok('KKRIR',  buscrifel('KKRIR' ), [ qw( KKKIRU   KKKIROS   KKKIRIS  KKKIRUM  KKKIRUS  KKKIRINT  ) ]);
+form_ok('CCRIR',  buscrifel('CCRIR' ), [ qw( CCCIRU   CCCIROS   CCCIRIS  CCCIRUM  CCCIRUS  CCCIRINT  ) ]);
+form_ok('FFRIR',  buscrifel('FFRIR' ), [ qw( FFFIRU   FFFIROS   FFFIRIS  FFFIRUM  FFFIRUS  FFFIRINT  ) ]);
+form_ok('VVRIR',  buscrifel('VVRIR' ), [ qw( VVVIRU   VVVIROS   VVVIRIS  VVVIRUM  VVVIRUS  VVVIRINT  ) ]);
+form_ok('RRRIR',  buscrifel('RRRIR' ), [ qw( RRRIRU   RRRIROS   RRRIRIS  RRRIRUM  RRRIRUS  RRRIRINT  ) ]);
+form_ok('SSRIR',  buscrifel('SSRIR' ), [ qw( SSSIRU   SSSIROS   SSSIRIS  SSSIRUM  SSSIRUS  SSSIRINT  ) ]);
+form_ok('ZZRIR',  buscrifel('ZZRIR' ), [ qw( ZZZIRU   ZZZIROS   ZZZIRIS  ZZZIRUM  ZZZIRUS  ZZZIRINT  ) ]);
+form_ok('MMRIR',  buscrifel('MMRIR' ), [ qw( MMMIRU   MMMIROS   MMMIRIS  MMMIRUM  MMMIRUS  MMMIRINT  ) ]);
+form_ok('NNRIR',  buscrifel('NNRIR' ), [ qw( NNNIRU   NNNIROS   NNNIRIS  NNNIRUM  NNNIRUS  NNNIRINT  ) ]);
+form_ok('LLRIR',  buscrifel('LLRIR' ), [ qw( LLLIRU   LLLIROS   LLLIRIS  LLLIRUM  LLLIRUS  LLLIRINT  ) ]);
+form_ok('THRIR',  buscrifel('THRIR' ), [ qw( THTHIRU  THTHIROS  THTHIRIS THTHIRUM THTHIRUS THTHIRINT ) ]);
+form_ok('DHRIR',  buscrifel('DHRIR' ), [ qw( DHDHIRU  DHDHIROS  DHDHIRIS DHDHIRUM DHDHIRUS DHDHIRINT ) ]);
+form_ok('KHRIR',  buscrifel('KHRIR' ), [ qw( KHKHIRU  KHKHIROS  KHKHIRIS KHKHIRUM KHKHIRUS KHKHIRINT ) ]);
 
 # test stem-changing verbs
 form_ok('KESCEN', buscrifel('KESCEN'), [ qw( KESSIO KESSIOS KESSAE KESSUOM KESSUES KESSIONT ) ]);

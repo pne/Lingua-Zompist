@@ -22,11 +22,11 @@ sub form_ok {
 }
 
 # dynamic definite present
-form_ok('LIUBEC', dynamic('LIUBEC', 'prilise', 'demeric'), [ qw( LIUBUI LIUBUIS LIUBUT LIUBIM LIUBIS LIUBINT ) ]);
-form_ok('LAUDAN', dynamic('LAUDAN', 'prilise', 'demeric'), [ qw( LAUDHUI LAUDHUIS LAUDHUT LAUDIM LAUDIS LAUDINT ) ]);
-form_ok('LEILEN', dynamic('LEILEN', 'prilise', 'demeric'), [ qw( LEILUI LEILUIS LEILUT LEILIM LEILIS LEILINT ) ]);
+form_ok('DUMEC',  dynamic('DUMEC',  'prilise', 'demeric'), [ qw( DUMUI  DUMUIS  DUMUT  DUMIM  DUMIS  DUMINT  ) ]);
+form_ok('KEKAN',  dynamic('KEKAN',  'prilise', 'demeric'), [ qw( KEKUI  KEKUIS  KEKUT  KEKIM  KEKIS  KEKINT  ) ]);
+form_ok('NOMEN',  dynamic('NOMEN',  'prilise', 'demeric'), [ qw( NOMUI  NOMUIS  NOMUT  NOMIM  NOMIS  NOMINT  ) ]);
 form_ok('CLAGER', dynamic('CLAGER', 'prilise', 'demeric'), [ qw( CLAGUI CLAGUIS CLAGUT CLAGIM CLAGIS CLAGINT ) ]);
-form_ok('NURIR',  dynamic('NURIR',  'prilise', 'demeric'), [ qw( NURUI  NURUIS  NURUT  NURIM  NURIS  NURINT  ) ]);
+form_ok('PARIR',  dynamic('PARIR',  'prilise', 'demeric'), [ qw( PARUI  PARUIS  PARUT  PARIM  PARIS  PARINT  ) ]);
 
 form_ok('KREDEC', dynamic('KREDEC', 'prilise', 'demeric'), [ qw( KREDHUI KREDHUIS KREDHUT KREDIM KREDIS KREDINT ) ]);
 form_ok('CLAETER', dynamic('CLAETER', 'prilise', 'demeric'), [ qw( CLAETHUI CLAETHUIS CLAETHUT CLAETIM CLAETIS CLAETINT ) ]);
@@ -57,11 +57,11 @@ form_ok('APER', dynamic('APER', 'prilise', 'demeric'), [ qw( AFUI AFUIS AFUT API
 form_ok('APIR', dynamic('APIR', 'prilise', 'demeric'), [ qw( AFUI AFUIS AFUT APIM APIS APINT ) ]);
 
 # dynamic definite past
-form_ok('LIUBEC', dynamic('LIUBEC', 'prilise', 'scrifel'), [ qw( LIUBEVUI LIUBEVUIS LIUBEVUT LIUBEVIM LIUBEVIS LIUBEVINT ) ]);
-form_ok('LAUDAN', dynamic('LAUDAN', 'prilise', 'scrifel'), [ qw( LAUDEVUI LAUDEVUIS LAUDEVUT LAUDEVIM LAUDEVIS LAUDEVINT ) ]);
-form_ok('LEILEN', dynamic('LEILEN', 'prilise', 'scrifel'), [ qw( LEILEVUI LEILEVUIS LEILEVUT LEILEVIM LEILEVIS LEILEVINT ) ]);
+form_ok('DUMEC',  dynamic('DUMEC',  'prilise', 'scrifel'), [ qw( DUMEVUI  DUMEVUIS  DUMEVUT  DUMEVIM  DUMEVIS  DUMEVINT  ) ]);
+form_ok('KEKAN',  dynamic('KEKAN',  'prilise', 'scrifel'), [ qw( KEKEVUI  KEKEVUIS  KEKEVUT  KEKEVIM  KEKEVIS  KEKEVINT  ) ]);
+form_ok('NOMEN',  dynamic('NOMEN',  'prilise', 'scrifel'), [ qw( NOMEVUI  NOMEVUIS  NOMEVUT  NOMEVIM  NOMEVIS  NOMEVINT  ) ]);
 form_ok('CLAGER', dynamic('CLAGER', 'prilise', 'scrifel'), [ qw( CLAGEVUI CLAGEVUIS CLAGEVUT CLAGEVIM CLAGEVIS CLAGEVINT ) ]);
-form_ok('NURIR',  dynamic('NURIR',  'prilise', 'scrifel'), [ qw( NUREVUI  NUREVUIS  NUREVUT  NUREVIM  NUREVIS  NUREVINT  ) ]);
+form_ok('PARIR',  dynamic('PARIR',  'prilise', 'scrifel'), [ qw( PAREVUI  PAREVUIS  PAREVUT  PAREVIM  PAREVIS  PAREVINT  ) ]);
 
 form_ok('GGGEC', dynamic('GGGEC', 'prilise', 'scrifel'), [ qw( GGGEVUI GGGEVUIS GGGEVUT GGGEVIM GGGEVIS GGGEVINT ) ]);
 form_ok('GGGAN', dynamic('GGGAN', 'prilise', 'scrifel'), [ qw( GGGEVUI GGGEVUIS GGGEVUT GGGEVIM GGGEVIS GGGEVINT ) ]);
@@ -70,11 +70,11 @@ form_ok('GGGER', dynamic('GGGER', 'prilise', 'scrifel'), [ qw( GGGEVUI GGGEVUIS 
 form_ok('GGGIR', dynamic('GGGIR', 'prilise', 'scrifel'), [ qw( GGGEVUI GGGEVUIS GGGEVUT GGGEVIM GGGEVIS GGGEVINT ) ]);
 
 # dynamic definite past anterior
-form_ok('LIUBEC', dynamic('LIUBEC', 'prilise', 'izhcrifel'), [ qw( LIUBERUI LIUBERUIS LIUBERUT LIUBERIM LIUBERIS LIUBERINT ) ]);
-form_ok('LAUDAN', dynamic('LAUDAN', 'prilise', 'izhcrifel'), [ qw( LAUDERUI LAUDERUIS LAUDERUT LAUDERIM LAUDERIS LAUDERINT ) ]);
-form_ok('LEILEN', dynamic('LEILEN', 'prilise', 'izhcrifel'), [ qw( LEILERUI LEILERUIS LEILERUT LEILERIM LEILERIS LEILERINT ) ]);
+form_ok('DUMEC',  dynamic('DUMEC',  'prilise', 'izhcrifel'), [ qw( DUMERUI  DUMERUIS  DUMERUT  DUMERIM  DUMERIS  DUMERINT  ) ]);
+form_ok('KEKAN',  dynamic('KEKAN',  'prilise', 'izhcrifel'), [ qw( KEKERUI  KEKERUIS  KEKERUT  KEKERIM  KEKERIS  KEKERINT  ) ]);
+form_ok('NOMEN',  dynamic('NOMEN',  'prilise', 'izhcrifel'), [ qw( NOMERUI  NOMERUIS  NOMERUT  NOMERIM  NOMERIS  NOMERINT  ) ]);
 form_ok('CLAGER', dynamic('CLAGER', 'prilise', 'izhcrifel'), [ qw( CLAGERUI CLAGERUIS CLAGERUT CLAGERIM CLAGERIS CLAGERINT ) ]);
-form_ok('NURIR',  dynamic('NURIR',  'prilise', 'izhcrifel'), [ qw( NURERUI  NURERUIS  NURERUT  NURERIM  NURERIS  NURERINT  ) ]);
+form_ok('PARIR',  dynamic('PARIR',  'prilise', 'izhcrifel'), [ qw( PARERUI  PARERUIS  PARERUT  PARERIM  PARERIS  PARERINT  ) ]);
 
 form_ok('GGGEC', dynamic('GGGEC', 'prilise', 'izhcrifel'), [ qw( GGGERUI GGGERUIS GGGERUT GGGERIM GGGERIS GGGERINT ) ]);
 form_ok('GGGAN', dynamic('GGGAN', 'prilise', 'izhcrifel'), [ qw( GGGERUI GGGERUIS GGGERUT GGGERIM GGGERIS GGGERINT ) ]);
@@ -83,11 +83,11 @@ form_ok('GGGER', dynamic('GGGER', 'prilise', 'izhcrifel'), [ qw( GGGERUI GGGERUI
 form_ok('GGGIR', dynamic('GGGIR', 'prilise', 'izhcrifel'), [ qw( GGGERUI GGGERUIS GGGERUT GGGERIM GGGERIS GGGERINT ) ]);
 
 # dynamic remote present
-form_ok('LIUBEC', dynamic('LIUBEC', 'buprilise', 'demeric'), [ qw( LIUBI LIUBIS LIUBUAT LIUBUAM LIUBUAS LIUBUANT ) ]);
-form_ok('LAUDAN', dynamic('LAUDAN', 'buprilise', 'demeric'), [ qw( LAUDI LAUDIS LAUDHUAT LAUDHUAM LAUDHUAS LAUDHUANT ) ]);
-form_ok('LEILEN', dynamic('LEILEN', 'buprilise', 'demeric'), [ qw( LEILI LEILIS LEILUAT LEILUAM LEILUAS LEILUANT ) ]);
+form_ok('DUMEC',  dynamic('DUMEC',  'buprilise', 'demeric'), [ qw( DUMI  DUMIS  DUMUAT  DUMUAM  DUMUAS  DUMUANT  ) ]);
+form_ok('KEKAN',  dynamic('KEKAN',  'buprilise', 'demeric'), [ qw( KEKI  KEKIS  KEKUAT  KEKUAM  KEKUAS  KEKUANT  ) ]);
+form_ok('NOMEN',  dynamic('NOMEN',  'buprilise', 'demeric'), [ qw( NOMI  NOMIS  NOMUAT  NOMUAM  NOMUAS  NOMUANT  ) ]);
 form_ok('CLAGER', dynamic('CLAGER', 'buprilise', 'demeric'), [ qw( CLAGI CLAGIS CLAGUAT CLAGUAM CLAGUAS CLAGUANT ) ]);
-form_ok('NURIR',  dynamic('NURIR',  'buprilise', 'demeric'), [ qw( NURI  NURIS  NURUAT  NURUAM  NURUAS  NURUANT  ) ]);
+form_ok('PARIR',  dynamic('PARIR',  'buprilise', 'demeric'), [ qw( PARI  PARIS  PARUAT  PARUAM  PARUAS  PARUANT  ) ]);
 
 form_ok('KREDEC', dynamic('KREDEC', 'buprilise', 'demeric'), [ qw( KREDI KREDIS KREDHUAT KREDHUAM KREDHUAS KREDHUANT ) ]);
 form_ok('CLAETER', dynamic('CLAETER', 'buprilise', 'demeric'), [ qw( CLAETI CLAETIS CLAETHUAT CLAETHUAM CLAETHUAS CLAETHUANT ) ]);
@@ -118,11 +118,11 @@ form_ok('APER', dynamic('APER', 'buprilise', 'demeric'), [ qw( API APIS AFUAT AF
 form_ok('APIR', dynamic('APIR', 'buprilise', 'demeric'), [ qw( API APIS AFUAT AFUAM AFUAS AFUANT ) ]);
 
 # dynamic remote past
-form_ok('LIUBEC', dynamic('LIUBEC', 'buprilise', 'scrifel'), [ qw( LIUBISI LIUBISUS LIUBISAT LIUBISAM LIUBISAS LIUBISANT ) ]);
-form_ok('LAUDAN', dynamic('LAUDAN', 'buprilise', 'scrifel'), [ qw( LAUDISI LAUDISUS LAUDISAT LAUDISAM LAUDISAS LAUDISANT ) ]);
-form_ok('LEILEN', dynamic('LEILEN', 'buprilise', 'scrifel'), [ qw( LEILISI LEILISUS LEILISAT LEILISAM LEILISAS LEILISANT ) ]);
+form_ok('DUMEC',  dynamic('DUMEC',  'buprilise', 'scrifel'), [ qw( DUMISI  DUMISUS  DUMISAT  DUMISAM  DUMISAS  DUMISANT  ) ]);
+form_ok('KEKAN',  dynamic('KEKAN',  'buprilise', 'scrifel'), [ qw( KEKISI  KEKISUS  KEKISAT  KEKISAM  KEKISAS  KEKISANT  ) ]);
+form_ok('NOMEN',  dynamic('NOMEN',  'buprilise', 'scrifel'), [ qw( NOMISI  NOMISUS  NOMISAT  NOMISAM  NOMISAS  NOMISANT  ) ]);
 form_ok('CLAGER', dynamic('CLAGER', 'buprilise', 'scrifel'), [ qw( CLAGISI CLAGISUS CLAGISAT CLAGISAM CLAGISAS CLAGISANT ) ]);
-form_ok('NURIR',  dynamic('NURIR',  'buprilise', 'scrifel'), [ qw( NURISI  NURISUS  NURISAT  NURISAM  NURISAS  NURISANT  ) ]);
+form_ok('PARIR',  dynamic('PARIR',  'buprilise', 'scrifel'), [ qw( PARISI  PARISUS  PARISAT  PARISAM  PARISAS  PARISANT  ) ]);
 
 form_ok('GGGEC', dynamic('GGGEC', 'buprilise', 'scrifel'), [ qw( GGGISI GGGISUS GGGISAT GGGISAM GGGISAS GGGISANT ) ]);
 form_ok('GGGAN', dynamic('GGGAN', 'buprilise', 'scrifel'), [ qw( GGGISI GGGISUS GGGISAT GGGISAM GGGISAS GGGISANT ) ]);

@@ -21,11 +21,11 @@ sub form_ok {
     is($is->[5], $should->[5], "III.pl. of $verb");
 }
 
-form_ok('LIUBEC', scrifel('LIUBEC'), [ qw( LIUBI  LIUBIUS LIUBU  LIUBUM  LIUBUS  LIUBIUNT ) ]);
-form_ok('LAUDAN', scrifel('LAUDAN'), [ qw( LAUDIO LAUDIOS LAUDAE LAUDUOM LAUDUOS LAUDIONT ) ]);
-form_ok('LEILEN', scrifel('LEILEN'), [ qw( LEILIO LEILIOS LEILAE LEILUOM LEILUES LEILIONT ) ]);
+form_ok('DUMEC',  scrifel('DUMEC' ), [ qw( DUMI   DUMIUS  DUMU   DUMUM   DUMUS   DUMIUNT  ) ]);
+form_ok('KEKAN',  scrifel('KEKAN' ), [ qw( KEKIO  KEKIOS  KEKAE  KEKUOM  KEKUOS  KEKIONT  ) ]);
+form_ok('NOMEN',  scrifel('NOMEN' ), [ qw( NOMIO  NOMIOS  NOMAE  NOMUOM  NOMUES  NOMIONT  ) ]);
 form_ok('CLAGER', scrifel('CLAGER'), [ qw( CLAGIE CLAGIES CLAGE  CLAGEM  CLAGES  CLAGIENT ) ]);
-form_ok('NURIR',  scrifel('NURIR' ), [ qw( NURIE  NURIES  NURAE  NUREM   NURES   NURIENT  ) ]);
+form_ok('PARIR',  scrifel('PARIR' ), [ qw( PARIE  PARIES  PARAE  PAREM   PARES   PARIENT  ) ]);
 
 form_ok('ESAN',   scrifel('ESAN'  ), [ qw( FUIO   FUIOS   FUAE   FUOM    FUOS    FUNT     ) ]);
 form_ok('EPESAN', scrifel('EPESAN'), [ qw( EUSIO  EUSIOS  EPAE   EUSUOM  EUSUOS  EUSIONT  ) ]);

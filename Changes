@@ -1,5 +1,14 @@
 Revision history for Perl extension Lingua::Zompist::Cadhinor.
 
+0.03 2001-11-14
+	- fixed -ER and -IR conjugations (the endings had become
+	interchanged in a couple of cases)
+	- tests with the new paradigmatic verbs: since LIUBEC, LAUDAN,
+	LEILEN, and NURIR are irregular, they were a poor choice. Mark
+	fixed that and I followed suit in my tests. (Actually, truth be
+	told, he only fixed three of those; I persuaded him to trade
+	LIUBEC for DUMEC.)
+
 0.02 2001-10-28
         - minor documentation fix (three functions had been left undocumented)
 

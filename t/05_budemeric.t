@@ -21,17 +21,11 @@ sub form_ok {
     is($is->[5], $should->[5], "III.pl. of $verb");
 }
 
-form_ok('LIUBEC', budemeric('LIUBEC'), [ qw( LIUBETAO LIUBETEIS LIUBETES LIUBETOM LIUBETOS LIUBETONT ) ]);
-TODO: {
-    local $TODO = "LAUDAN and LEILEN have a different remote stem, but the paradigm is wrong";
-    form_ok('LAUDAN', budemeric('LAUDAN'), [ qw( LAUDEMAI LAUDEMES  LAUDEMET LAUDEMAM LAUDEMUS LAUDEMONT ) ]);
-    form_ok('LEILEN', budemeric('LEILEN'), [ qw( LEILEMAI LEILEMES  LEILEMET LEILEMEM LEILEMES LEILEMENT ) ]);
-}
-form_ok('CLAGER', budemeric('CLAGER'), [ qw( CLAGETU  CLAGETOS  CLAGETIS CLAGETUM CLAGETUS CLAGETINT ) ]);
-TODO: {
-    local $TODO = "NURIR has a different remote stem, but the paradigm is wrong";
-    form_ok('NURIR',  budemeric('NURIR' ), [ qw( NURETU   NURETOS   NURETIS  NURETUM  NURETUS  NURETUNT  ) ]);
-}
+form_ok('DUMEC',  budemeric('DUMEC' ), [ qw( DUMETAO  DUMETEIS  DUMETES  DUMETOM  DUMETOS  DUMETONT  ) ]);
+form_ok('KEKAN',  budemeric('KEKAN' ), [ qw( KEKEMAI  KEKEMES   KEKEMET  KEKEMAM  KEKEMUS  KEKEMONT  ) ]);
+form_ok('NOMEN',  budemeric('NOMEN' ), [ qw( NOMEMAI  NOMEMES   NOMEMET  NOMEMEM  NOMEMES  NOMEMENT  ) ]);
+form_ok('CLAGER', budemeric('CLAGER'), [ qw( CLAGETU  CLAGETOS  CLAGETIS CLAGETUM CLAGETUS CLAGETUNT ) ]);
+form_ok('PARIR',  budemeric('PARIR' ), [ qw( PARETU   PARETOS   PARETIS  PARETUM  PARETUS  PARETINT  ) ]);
 
 form_ok('ESAN',   budemeric('ESAN'  ), [ qw( ESTAO    ESTEIS    ESTES    ESTOM    ESTOS    ESTONT    ) ]);
 
@@ -39,8 +33,8 @@ form_ok('ESAN',   budemeric('ESAN'  ), [ qw( ESTAO    ESTEIS    ESTES    ESTOM  
 form_ok('GGGEC',  budemeric('GGGEC' ), [ qw( GGGETAO  GGGETEIS  GGGETES  GGGETOM  GGGETOS  GGGETONT  ) ]);
 form_ok('GGGAN',  budemeric('GGGAN' ), [ qw( GGGEMAI  GGGEMES   GGGEMET  GGGEMAM  GGGEMUS  GGGEMONT  ) ]);
 form_ok('GGGEN',  budemeric('GGGEN' ), [ qw( GGGEMAI  GGGEMES   GGGEMET  GGGEMEM  GGGEMES  GGGEMENT  ) ]);
-form_ok('GGGER',  budemeric('GGGER' ), [ qw( GGGETU   GGGETOS   GGGETIS  GGGETUM  GGGETUS  GGGETINT  ) ]);
-form_ok('GGGIR',  budemeric('GGGIR' ), [ qw( GGGETU   GGGETOS   GGGETIS  GGGETUM  GGGETUS  GGGETUNT  ) ]);
+form_ok('GGGER',  budemeric('GGGER' ), [ qw( GGGETU   GGGETOS   GGGETIS  GGGETUM  GGGETUS  GGGETUNT  ) ]);
+form_ok('GGGIR',  budemeric('GGGIR' ), [ qw( GGGETU   GGGETOS   GGGETIS  GGGETUM  GGGETUS  GGGETINT  ) ]);
 
 # test stem-changing verbs
 form_ok('KESCEN', budemeric('KESCEN'), [ qw( KESSAI KESSEIS KESSET KESSEM KESSES  KESSENT ) ]);
@@ -48,29 +42,29 @@ form_ok('TOSCEN', budemeric('TOSCEN'), [ qw( TOSSAI TOSSEIS TOSSET TOSSEM TOSSES
 form_ok('FAR',    budemeric('FAR'   ), [ qw( FASSAO FASSEOS FASSES FASSOM FASSOUS FASSONT ) ]);
 form_ok('LESCEN', budemeric('LESCEN'), [ qw( LESSAI LESSEIS LESSET LESSEM LESSES  LESSENT ) ]);
 
-form_ok('SALTER', budemeric('SALTER'), [ qw( SELSU  SELSEUS SELSIT SELSUM SELSUS  SELSINT ) ]);
-form_ok('VALTER', budemeric('VALTER'), [ qw( VELSU  VELSEUS VELSIT VELSUM VELSUS  VELSINT ) ]);
+form_ok('SALTER', budemeric('SALTER'), [ qw( SELSU  SELSEUS SELSET SELSUM SELSUS  SELSUNT ) ]);
+form_ok('VALTER', budemeric('VALTER'), [ qw( VELSU  VELSEUS VELSET VELSUM VELSUS  VELSUNT ) ]);
 form_ok('METTAN', budemeric('METTAN'), [ qw( MESSAI MESSEIS MESSET MESSAM MESSUS  MESSONT ) ]);
 
 form_ok('CURREC', budemeric('CURREC'), [ qw( CORSAO CORSEOS CORSES CORSOM CORSOUS CORSONT ) ]);
 form_ok('DESIEN', budemeric('DESIEN'), [ qw( DESSAI DESSEIS DESSET DESSEM DESSES  DESSENT ) ]);
-form_ok('STERER', budemeric('STERER'), [ qw( STERSU STERSEUS STERSIT STERSUM STERSUS STERSINT ) ]);
-form_ok('MERIR',  budemeric('MERIR' ), [ qw( MERSU  MERSEUS MERSET MERSUM MERSUS  MERSUNT ) ]);
+form_ok('STERER', budemeric('STERER'), [ qw( STERSU STERSEUS STERSET STERSUM STERSUS STERSUNT ) ]);
+form_ok('MERIR',  budemeric('MERIR' ), [ qw( MERSU  MERSEUS MERSIT MERSUM MERSUS  MERSINT ) ]);
 form_ok('FERIEN', budemeric('FERIEN'), [ qw( FERSAI FERSEIS FERSET FERSEM FERSES  FERSENT ) ]);
 form_ok('LEILEN', budemeric('LEILEN'), [ qw( LELSAI LELSEIS LELSET LELSEM LELSES  LELSENT ) ]);
-form_ok('NURIR',  budemeric('NURIR' ), [ qw( NORSU  NORSEUS NORSET NORSUM NORSUS  NORSUNT ) ]);
-form_ok('AMARIR', budemeric('AMARIR'), [ qw( AMERSU AMERSEUS AMERSET AMERSUM AMERSUS AMERSUNT ) ]);
+form_ok('NURIR',  budemeric('NURIR' ), [ qw( NORSU  NORSEUS NORSIT NORSUM NORSUS  NORSINT ) ]);
+form_ok('AMARIR', budemeric('AMARIR'), [ qw( AMERSU AMERSEUS AMERSIT AMERSUM AMERSUS AMERSINT ) ]);
 
 form_ok('DAN',    budemeric('DAN'   ), [ qw( DONAI  DONEIS  DONET  DONAM  DONUS   DONONT ) ]);
-form_ok('NOER',   budemeric('NOER'  ), [ qw( NOSU   NOSEUS  NOSIT  NOSUM  NOSUS   NOSINT ) ]);
+form_ok('NOER',   budemeric('NOER'  ), [ qw( NOSU   NOSEUS  NOSET  NOSUM  NOSUS   NOSUNT ) ]);
 
 form_ok('PUGAN',  budemeric('PUGAN' ), [ qw( POGAI  POGEIS  POGET  POGAM  POGUS   POGONT ) ]);
 form_ok('PUHAN',  budemeric('PUHAN' ), [ qw( POHAI  POHEIS  POHET  POHAM  POHUS   POHONT ) ]);
 form_ok('BRIGAN', budemeric('BRIGAN'), [ qw( BROGAI BROGEIS BROGET BROGAM BROGUS  BROGONT ) ]);
 form_ok('SUBRAN', budemeric('SUBRAN'), [ qw( SOBRAI SOBREIS SOBRET SOBRAM SOBRUS  SOBRONT ) ]);
-form_ok('DUCIR',  budemeric('DUCIR' ), [ qw( DOCU   DOCEUS  DOCET  DOCUM  DOCUS   DOCUNT ) ]);
+form_ok('DUCIR',  budemeric('DUCIR' ), [ qw( DOCU   DOCEUS  DOCIT  DOCUM  DOCUS   DOCINT ) ]);
 form_ok('LEGAN',  budemeric('LEGAN' ), [ qw( LOGAI  LOGEIS  LOGET  LOGAM  LOGUS   LOGONT ) ]);
 form_ok('LAUDAN', budemeric('LAUDAN'), [ qw( LODAI  LODEIS  LODET  LODAM  LODUS   LODONT ) ]);
 form_ok('KUSAN',  budemeric('KUSAN' ), [ qw( KOSSAI KOSSEIS KOSSET KOSSAM KOSSUS  KOSSONT ) ]);
 form_ok('KETHEN', budemeric('KETHEN'), [ qw( KOTHAI KOTHEIS KOTHET KOTHEM KOTHES  KOTHENT ) ]);
-form_ok('IUSIR',  budemeric('IUSIR' ), [ qw( IOSSU  IOSSEUS IOSSET IOSSUM IOSSUS  IOSSUNT ) ]);
+form_ok('IUSIR',  budemeric('IUSIR' ), [ qw( IOSSU  IOSSEUS IOSSIT IOSSUM IOSSUS  IOSSINT ) ]);

@@ -18,11 +18,11 @@ sub form_ok {
     is($is->[2], $should->[2], "gerund of $verb");
 }
 
-form_ok('LIUBEC', part('LIUBEC'), [ qw( LIUBILES LIUBEL LIUBIM  ) ]);
-form_ok('LAUDAN', part('LAUDAN'), [ qw( LAUDEC   LAUDUL LAUDAUM ) ]);
-form_ok('LEILEN', part('LEILEN'), [ qw( LEILEC   LEILUL LEILAUM ) ]);
-form_ok('CLAGER', part('CLAGER'), [ qw( CLAGEC   CLAGEL CLAGIM  ) ]);
-form_ok('NURIR',  part('NURIR' ), [ qw( NURIC    NURUL  NURAUM  ) ]);
+form_ok('DUMEC',  part('DUMEC' ), [ qw( DUMILES DUMEL  DUMIM   ) ]);
+form_ok('KEKAN',  part('KEKAN' ), [ qw( KEKEC   KEKUL  KEKAUM  ) ]);
+form_ok('NOMEN',  part('NOMEN' ), [ qw( NOMEC   NOMUL  NOMAUM  ) ]);
+form_ok('CLAGER', part('CLAGER'), [ qw( CLAGEC  CLAGEL CLAGIM  ) ]);
+form_ok('PARIR',  part('PARIR' ), [ qw( PARIC   PARUL  PARAUM  ) ]);
 
 # test general forms
 form_ok('GGGEC',  part('GGGEC' ), [ qw( GGGILES  GGGEL  GGGIM   ) ]);

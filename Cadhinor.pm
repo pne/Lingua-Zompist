@@ -54,7 +54,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS %verb);
 @EXPORT = qw(
 	
 );
-$VERSION = '0.02';
+$VERSION = '0.03';
 
 %verb = (
   static => {
@@ -159,8 +159,8 @@ my %present = (
   EC  => [ qw( AO EOS ES OM OUS ONT ) ],
   AN  => [ qw( AI EIS ET AM  US ONT ) ],
   EN  => [ qw( AI EIS ET EM  ES ENT ) ],
-  ER  => [ qw( U  EUS IT UM  US INT ) ],
-  IR  => [ qw( U  EUS ET UM  US UNT ) ],
+  ER  => [ qw( U  EUS ET UM  US UNT ) ],
+  IR  => [ qw( U  EUS IT UM  US INT ) ],
   dyn => [ qw( UI UIS UT IM  IS INT ) ],
 );
 
@@ -175,21 +175,18 @@ my %past = (
 
 my %demeric = (
   ESAN    => [ qw( SAI     SEIS   ES     ESAM    ESOS     SONT     ) ],
-  CTANEN  => [ qw( CTAI    CTES   CTET   CTANAM  CTANUS   CTANONT  ) ],
-  CULLIR  => [ qw( CULLU   CULS   CULT   CULLUM  CULLUS   CULLINT  ) ],
   EPESAN  => [ qw( EUSAI   EUSEIS EPES   EPESAM  EPESOS   EUSONT   ) ],
+  CTANEN  => [ qw( CTAI    CTES   CTET   CTANAM  CTANUS   CTANONT  ) ],
 # FAR     => [ qw( FAEO    FAES   FAET   FASCOM  FASCOUS  FASCONT  ) ],
   FAR     => [ qw( FAEU    FAES   FAET   FASCOM  FASCOUS  FASCONT  ) ],
   IUSIR   => [ qw( IUSU    IUS    IUT    IUSUM   IUSUS    IUINT    ) ],
-  KES     => [ qw( KEAI    KIES   KIET   KEHAM   KEHUS    KEHONT   ) ],
+  LIUBEC  => [ qw( LIUO    LIUOS  LIUS   LIUBOM  LIUBOUS  LIUBONT  ) ],
   KETHEN  => [ qw( KETHUI  KETHUS KETHUT KETHEM  KETHES   KENT     ) ],
-  LIUBEC  => [ qw( LIUO/LIUBAO
-                           LIUOS/LIUBEOS
-                                  LIUS/LIUBES
-                                         LIUBOM  LIUBOUS  LIUBONT  ) ],
-  NEN     => [ qw( NEI     NIS    NIT    NESEM   NESES    NENT     ) ],
+  CULLIR  => [ qw( CULLU   CULS   CULT   CULLUM  CULLUS   CULLINT  ) ],
   OHIR    => [ qw( OHU     UIS    UIT    OHUM    OHUS     OHINT    ) ],
   SCRIFEC => [ qw( SCRIFAO SCRIS  SCRIT  SCRIFOM SCRIFOUS SCRIFONT ) ],
+  NEN     => [ qw( NEI     NIS    NIT    NESEM   NESES    NENT     ) ],
+  KES     => [ qw( KEAI    KIES   KIET   KEHAM   KEHUS    KEHONT   ) ],
 # VOLIR   => [ qw( VULU    VUIS   VUIT   VOLUM   VOLUS    VOLINT   ) ],
   VOLIR   => [ qw( VULU    VULS   VULT   VOLUM   VOLUS    VOLINT   ) ],
   FAUCIR  => [ qw( FAU     FEUS   FEUT   FAUCUM  FAUCUS   FAUCINT  ) ],
@@ -350,9 +347,9 @@ sub budemeric {
           $stem =~ s/EN$/EM/) {
     return [ map "$stem$_", qw( AI ES  ET EM ES ENT ) ];
   } elsif($stem =~ s/ER$/ET/) {
-    return [ map "$stem$_", qw( U  OS  IS UM US INT ) ];
-  } elsif($stem =~ s/IR$/ET/) {
     return [ map "$stem$_", qw( U  OS  IS UM US UNT ) ];
+  } elsif($stem =~ s/IR$/ET/) {
+    return [ map "$stem$_", qw( U  OS  IS UM US INT ) ];
   } else {
     return;
   }
@@ -401,10 +398,10 @@ sub buscrifel {
     return [ map "$stem$_", qw( AI ES  ET EM ES ENT ) ];
   } elsif($stem =~ s/([BPDTGKCFVRSZMNL]|[TDK]?H)RER$/$1$1IR/ ||
           $stem =~ s/ER$/IR/) {
-    return [ map "$stem$_", qw( U  OS  IS UM US INT ) ];
+    return [ map "$stem$_", qw( U  OS  IS UM US UNT ) ];
   } elsif($stem =~ s/([BPDTGKCFVRSZMNL]|[TDK]?H)RIR$/$1$1IR/ ||
           $stem =~ m/IR$/) {
-    return [ map "$stem$_", qw( U  OS  IS UM US UNT ) ];
+    return [ map "$stem$_", qw( U  OS  IS UM US INT ) ];
   } else {
     return;
   }
@@ -784,7 +781,7 @@ Lingua::Zompist::Cadhinor - Inflect Cadhinor nouns, verbs, and adjectives
 
 =head1 VERSION
 
-This document refers to version 0.02 of Lingua::Zompist::Cadhinor.
+This document refers to version 0.03 of Lingua::Zompist::Cadhinor.
 
 =head1 SYNOPSIS
 
