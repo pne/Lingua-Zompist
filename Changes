@@ -1,5 +1,8 @@
 Revision history for Perl extension Lingua::Zompist::Verdurian.
 
+0.03  Thu 2001-11-15
+	- minor documentation nits. No changes to code or tests.
+
 0.02  Wed 2001-11-14
 	- added participle for 'kies' after an email from Mark;
 	also fixed participle for 'dan'.

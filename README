@@ -1,4 +1,4 @@
-Lingua/Zompist/Verdurian version 0.02
+Lingua/Zompist/Verdurian version 0.03
 =====================================
 
 Lingua::Zompist::Verdurian is a module which allows you to inflect Verdurian
@@ -11,10 +11,12 @@ one for each tense or mood and another for the participles.
 
 CHANGES SINCE THE LAST VERSION
 
-'kies' now has participles (with stem kaiv-). The participles for 'dan'
-are fixed (stem don- rather than d-).
+Minor documentation nits (including documenting the fact that "kies" now
+has a participle).
 
-These are the only changes between version 0.01 and 0.02.
+There were no changes to code or tests in this version.
+
+For changes in previous versions, see the file "Changes".
 
 INSTALLATION
 

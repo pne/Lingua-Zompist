@@ -32,7 +32,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 	
 );
-$VERSION = '0.02';
+$VERSION = '0.03';
 
 my %verb = (demeric => \&demeric,
             scrifel => \&scrifel,
@@ -666,8 +666,8 @@ Lingua::Zompist::Verdurian - Inflect Verdurian nouns, verbs, and adjectives
 
 =head1 VERSION
 
-This document refers to version 0.02 of Lingua::Zompist::Verdurian, released
-on 2001-11-14.
+This document refers to version 0.03 of Lingua::Zompist::Verdurian, released
+on 2001-11-15.
 
 =head1 SYNOPSIS
 
@@ -683,7 +683,7 @@ or
 
   use Lingua::Zompist::Verdurian qw( demeric crifel );
   $you_know = demeric('shrifec')->[1];
-  $they_have = crifel('tenec')->[5];
+  $they_had = crifel('tenec')->[5];
 
   
   $word = noun('cuon');  # nouns
@@ -749,7 +749,7 @@ In general, the arrayref will have eight elements, in the following order:
 nominative singular, genitive singular, accusative singular, dative singular,
 nominative plural, genitive plural, accusative plural, dative plural. In some
 cases, some of those elements may be C<undef> (especially in the plural of
-non-personal pronouns such as I<kio> or I<ifcE<euml>> -- but no I<ke>).
+non-personal pronouns such as I<kio> or I<ifcE<euml>> -- but not I<ke>).
 
 The function should determine the gender and declension of the noun or pronoun
 automatically. Nouns ending in I<-a> are taken to be feminine unless they are
@@ -881,9 +881,6 @@ Since participles decline like declension I adjectives (or declension IV
 adjectives, in the case of present participles of verbs of the I<C>
 conjugation), the other forms of the participles may be obtained by calling the
 L<adj|/"adj"> function, if desired.
-
-It is unclear what the participles of I<kies> are. Passing I<kies> to the part
-function will return C<undef> or the empty list, at the moment.
 
 =head1 BUGS
 
