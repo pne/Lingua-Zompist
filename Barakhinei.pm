@@ -1,12 +1,15 @@
 package Lingua::Zompist::Barakhinei;
-# vim:set sw=2 si:
+# vim:set sw=2 cin cinkeys-=0#:
 
 use 5.005;
 use strict;
-use Carp;
+# use re 'debug';
 
 require Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
+use vars qw($gendertab $pluraltab $rootconstab $subjtab);
+use vars qw($cadhctab $cadhgtab $cadhutab);
+use vars qw($classtab);
 @ISA = qw(Exporter);
 
 # Items to export into callers namespace by default. Note: do not export
@@ -16,7 +19,17 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 # This allows declaration	use Lingua::Zompist::Barakhinei ':all';
 # If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
 # will save memory.
-%EXPORT_TAGS = ( 'all' => [ qw(
+%EXPORT_TAGS = (
+  'tabs' => [ qw(
+    $gendertab
+    $pluraltab
+    $rootconstab
+    $subjtab
+    $cadhutab
+    $cadhgtab
+    $cadhctab
+) ],
+  'all' => [ qw(
     demeric
     scrifel
     izhcrifel
@@ -26,14 +39,17 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
     part
     noun
     adj
-) ] );
+) ],
+);
+
+push @{$EXPORT_TAGS{'all'}}, @{$EXPORT_TAGS{'tabs'}};
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
 @EXPORT = qw(
 	
 );
-$VERSION = '0.01';
+$VERSION = '0.02';
 
 my %verb = (demeric => \&demeric,
             scrifel => \&scrifel,
@@ -51,8 +67,9 @@ my @cases = qw(nom gen acc dat);
 my @numbers = qw(sing pl);
 
 # Some handy things for -i- insertion and moving stress
-my $cons = qr/(?:[ctdsknlr]h|[pbtdkgfvszhmnlr])/;
-my $vow  = qr/[aeiouâêîôûAEIOUÂÊÎÔÛ]/;
+my $cons    = qr/(?:[ctdsknlr]h|[pbtdkgfvszhmnlr])/;
+my $consend = qr/[hpbtdkgfvszhmnlr]$/;
+my $vow     = qr/[aeiouâêîôûAEIOUÂÊÎÔÛ]/;
 
 # spirant forms
 my %spir = (
@@ -63,46 +80,144 @@ my %spir = (
 
 
 # Verbs with stems ending in -c in Cadhinor
-my %cadhc = (
-  'faichi' => 'faucir',
-  'foka'   => 'vocan',
-);
+$cadhctab = {
+  'dichi'     => 'DUCIR',
+  'faichi'    => 'FAUCIR',
+  'farki'     => 'FARCIR',
+  'fênki'     => 'VENCIR',
+  'foka'      => 'VOCAN',
+  'hashki'    => 'HASCIR',
+  'hêshki'    => 'HESCIR',
+  'kaoka'     => 'CAUCAN',
+  'kashki'    => 'KASCIR',
+  'kêshkê'    => 'KESCEN',
+  'krêshki'   => 'CRESCIR',
+  'lachê'     => 'LACEN',
+  'lêshkê'    => 'LESCEN',
+  'manka'     => 'MANCAN',
+  'oloka'     => 'OLOCAN',
+  'prechê'    => 'PRECER',
+  'rashki'    => 'RASCIR',
+  'shkolichê' => 'SCOLICER',
+  'snuka'     => 'SNUCAN',
+  'tôshkê'    => 'TOSCEN',
+  'trankê'    => 'TRANCEN',
+};
 
 # Verbs with stems ending in -g in Cadhinor
-my %cadhg = (
-  'grochê' => 'grogec',
-  'klachê' => 'clager',
-  'nochê'  => 'noger',
-);
+$cadhgtab = {
+  'benhi'  => 'BENGIR',
+  'briga'  => 'BRIGAN',
+  'fachi'  => 'VAGIR',
+  'glonhê' => 'GLONGEC',
+  'grochê' => 'GROGEC',
+  'hachê'  => 'IAGEN',
+  'ilhê'   => 'ULGEC',
+  'klachê' => 'CLAGER',
+  'kochi'  => 'COGIR',
+  'krechê' => 'CREGEN',
+  'lega'   => 'LEGAN',
+  'mêrgê'  => 'MERGEN',
+  'nochê'  => 'NOGEN',
+  'puga'   => 'PUGAN',
+  'trachê' => 'TRAGEN',
+  'troga'  => 'TROGAN',
+};
 
 # Verbs with stems ending in -uC in Cadhinor
-my %cadhu = (
-  'chura'  => 'turan',
-  'faichi' => 'faucir',
-);
+$cadhutab = {
+  'burukha'    => 'BURUKHAN',
+  'chidê'      => 'CIUDER',
+  'chura'      => 'TURAN',
+  'dhirê'      => 'DHUREC',
+  'dichi'      => 'DUCIR',
+  'dimê'       => 'DUMEC',
+  'faichi'     => 'FAUCIR',
+  'faoba'      => 'FAUBAN',
+  'fedhura'    => 'VETHURAN',
+  'fura'       => 'FURAN',
+  'glunti'     => 'GLUNTIR',
+  'gushta'     => 'GUSTAN',
+  'hizi'       => 'IUSIR',
+  'idura'      => 'IDURAN',
+  'ilhê'       => 'ULGEC',
+  'ilubra'     => 'ILUBRAN',
+  'ishkuza'    => 'ISKUSAN',
+  'izubrê'     => 'ISUBREN',
+  'kaoka'      => 'CAUCAN',
+  'kitê'       => 'CUTEC',
+  'kupi'       => 'CULPIR',
+  'kurê'       => 'CURREC',
+  'laoda'      => 'LAUDAN',
+  'laota'      => 'LAUTAN',
+  'liri'       => 'LURIR',
+  'lôndura'    => 'LONDURAN',
+  'meundê'     => 'MEHUNDEN',
+  'niri'       => 'NURIR',
+  'plii'       => 'PLUHIR',
+  'pua'        => 'PUHAN',
+  'puga'       => 'PUGAN',
+  'raola'      => 'RAULAN',
+  'rênlaoda'   => 'RENLAUDAN',
+  'rêshkuli'   => 'RESCULLIR',
+  'ridhê'      => 'RUTHER',
+  'rizundê'    => 'RISUNDEN',
+  'shkechubrê' => 'SCEIUBREN',
+  'shpiri'     => 'SPURIR',
+  'sidi'       => 'SUDIR',
+  'snuka'      => 'SNUCAN',
+  'subra'      => 'SUBRAN',
+  'sudri'      => 'SUDRIR',
+  'taobrê'     => 'TAUBREN',
+  'traoda'     => 'TRAUDAN',
+  'ubri'       => 'UBRIR',
+};
 
 # Verb classes
-my %class = (
-); # %class
+$classtab = {
+}; # %class
 
 # Separate subjunctive stems
-my %subj = (
-  laoda => 'loda',
-); # %subj
+$subjtab = {
+  'achupua'  => 'achupoa',
+  'da'       => 'dona',
+  'dichi'    => 'doki',
+  'feriê'    => 'fêrsê',
+  'fôtê'     => 'fêlsê',
+  'hizi'     => 'hôrsi',
+  'ihmêta'   => 'ihmêrsa',
+  'kêshkê'   => 'kêsê',
+  'kolaoda'  => 'koloda',
+  'kudichi'  => 'kudoki',
+  'laoda'    => 'loda',
+  'lega'     => 'loga',
+  'lêshkê'   => 'lêsê',
+  'mêta'     => 'mêrsa',
+  'noê'      => 'nozê',
+  'pua'      => 'poa',
+  'puga'     => 'poga',
+  'rênlaoda' => 'rênloda',
+  'rênlelê'  => 'rênlêlsê',
+  'shterê'   => 'shtêrsê',
+  'sôtê'     => 'sêlsê',
+  'subra'    => 'sôbra',
+  'tôshkê'   => 'tôsê',
+}; # $subjtab
 
 
 my %demeric = (
-  'epeza'   => [ qw( ûzâ ûzê epê epeza epezu ûzôn ) ],
-  'eza'     => [ qw( sâ sê ê eza ezu sôn ) ],
-  'fâli'    => [ qw( fâl fêl fêl fâlu fâlu fâlîn ) ],
-  'foli'    => [ qw( ful ful fut folu folu folîn ) ],
-  'hizi'    => [ qw( huz hu hut hizu hizu hizîn ) ],
-  'kedhê'   => [ qw( kedhâ kedhê kedhu kedha kedhu kên ) ],
-  'lhibê'   => [ qw( lhua lhû lhu lhubu lhubu lôn ) ],
-  'nhê'     => [ qw( nhe ni ni nheza nhezu nhên ) ],
-  'oi'      => [ qw( oh fi fit ou ou oîn ) ],
-  'shkrivê' => [ qw( shkriva shkri shkri shkrivu shkrivu shkrivôn ) ],
-  'shtanê'  => [ qw( shtâ shtê shtê shtana shtanu shtôn ) ],
+  'epeza'     => [ qw( ûzâ ûzê epê epeza epezu ûzôn ) ],
+  'eza'       => [ qw( sâ sê ê eza ezu sôn ) ],
+  'fâli'      => [ qw( fâl fêl fêl fâlu fâlu fâlîn ) ],
+  'foli'      => [ qw( ful ful fut folu folu folîn ) ],
+  'hizi'      => [ qw( huz hu hut hizu hizu hizîn ) ],
+  'kedhê'     => [ qw( kedhâ kedhê kedhu kedha kedhu kên ) ],
+  'lhibê'     => [ qw( lhua lhû lhu lhubu lhubu lôn ) ],
+  'nhê'       => [ qw( nhe ni ni nheza nhezu nhên ) ],
+  'oi'        => [ qw( oh fi fit ou ou oîn ) ],
+  'shkrivê'   => [ qw( shkriva shkri shkri shkrivu shkrivu shkrivôn ) ],
+  'shtanê'    => [ qw( shtâ shtê shtê shtana shtanu shtôn ) ],
+  'rênshtanê' => [ qw( rênshtâ rênshtê rênshtê rênshtana rênshtanu rênshtôn ) ],
 );
 
 sub demeric {
@@ -113,17 +228,14 @@ sub demeric {
 
   return $demeric{$verb} if exists $demeric{$verb};
 
-  if(! defined($class) && exists $class{$verb}) {
-    $class = $class{$verb};
+  if(! defined($class) && exists $classtab->{$verb}) {
+    $class = $classtab->{$verb};
   }
 
   $class = 2 if !defined($class) && $verb =~ /a$/;
+  $class = 3 if !defined($class) && $verb =~ /ê$/;
   $class = 4 if !defined($class) && $verb =~ /i$/;
   $class = 0 unless defined $class;
-
-  if($verb =~ /ê$/ && !defined($class)) {
-    return; croak "Can't determine declension for verb $verb";
-  }
 
   if($class == 1 && $stem =~ s/ê$//) {
     $table = [ map "$stem$_", qw( a û ê u u ôn ) ];
@@ -136,37 +248,37 @@ sub demeric {
   } elsif($class == 5 && $stem =~ s/ê$//) {
     $table = [ map "$stem$_", '', qw( û ê u u un ) ];
   } else {
-    return; croak "Can't determine declension for verb $verb";
+    return;
   }
 
   # Cadhinor verbs in -c- and -g-
   if($class == 1 || $class == 4 || $class == 5) {
     for(@{$table}[0,3,4,5]) {
-      if(exists $cadhc{$verb}) {
+      if(exists $cadhctab->{$verb}) {
         s/ch([auoâô]?n?)$/k$1/;
-      } elsif(exists $cadhg{$verb}) {
+      } elsif(exists $cadhgtab->{$verb}) {
         s/ch([auoâô]?n?)$/g$1/;
       }
     }
     for(@{$table}[1,2]) {
-      if(exists $cadhc{$verb}) {
+      if(exists $cadhctab->{$verb}) {
         s/k([eiêîû]n?)$/ch$1/;
-      } elsif(exists $cadhg{$verb}) {
+      } elsif(exists $cadhgtab->{$verb}) {
         s/g([eiêîû]n?)$/ch$1/;
       }
     }
   } elsif($class == 2 || $class == 3) {
     for(@{$table}[0]) {
-      if(exists $cadhc{$verb}) {
+      if(exists $cadhctab->{$verb}) {
         s/ch([auoâô]?n?)$/k$1/;
-      } elsif(exists $cadhg{$verb}) {
+      } elsif(exists $cadhgtab->{$verb}) {
         s/ch([auoâô]?n?)$/g$1/;
       }
     }
     for(@{$table}[1,2]) {
-      if(exists $cadhc{$verb}) {
+      if(exists $cadhctab->{$verb}) {
         s/k([eiêîû]n?)$/ch$1/;
-      } elsif(exists $cadhg{$verb}) {
+      } elsif(exists $cadhgtab->{$verb}) {
         s/g([eiêîû]n?)$/ch$1/;
       }
     }
@@ -195,7 +307,7 @@ sub demeric {
   }
 
   # front and back vowel alternations for Cadhinor verbs in -u-
-  if(exists $cadhu{$verb}) {
+  if(exists $cadhutab->{$verb}) {
     for(@$table) {
       s/i($cons+[aouâôû]?)$/o$1/;
       s/u($cons+[êiî]n?)$/i$1/;
@@ -219,17 +331,14 @@ sub scrifel {
 
   return $scrifel{$verb} if exists $scrifel{$verb};
 
-  if(! defined($class) && exists $class{$verb}) {
-    $class = $class{$verb};
+  if(! defined($class) && exists $classtab->{$verb}) {
+    $class = $classtab->{$verb};
   }
 
-  $class = 2 if $verb =~ /a$/;
-  $class = 4 if $verb =~ /i$/;
+  $class = 2 if !defined($class) && $verb =~ /a$/;
+  $class = 3 if !defined($class) && $verb =~ /ê$/;
+  $class = 4 if !defined($class) && $verb =~ /i$/;
   $class = 0 unless defined $class;
-
-  if($verb =~ /ê$/ && !defined($class)) {
-    return; croak "Can't determine declension for verb $verb";
-  }
 
   if($class == 1 && $stem =~ s/ê$//) {
     $table = [ map "$stem$_", qw( i î ), '', qw( ê ê în ) ];
@@ -242,25 +351,25 @@ sub scrifel {
   } elsif($class == 5 && $stem =~ s/ê$//) {
     $table = [ map "$stem$_", qw( i ê ), '', qw( ê ê ên ) ];
   } else {
-    return; croak "Can't determine declension for verb $verb";
+    return;
   }
 
   # Cadhinor verbs in -c- and -g-
   if($class == 1 || $class == 2 || $class == 3) {
     for(@$table) {
-      if(exists $cadhc{$verb}) {
+      if(exists $cadhctab->{$verb}) {
         s/ch([êâu]?)$/k$1/;
         s/k([iî]n?)$/ch$1/;
-      } elsif(exists $cadhg{$verb}) {
+      } elsif(exists $cadhgtab->{$verb}) {
         s/ch([êâu]?)$/g$1/;
         s/g([iî]n?)$/ch$1/;
       }
     }
   } elsif($class == 4) {
     for(@{$table}[2]) {
-      if(exists $cadhc{$verb}) {
+      if(exists $cadhctab->{$verb}) {
         s/ch(â)$/k$1/;
-      } elsif(exists $cadhg{$verb}) {
+      } elsif(exists $cadhgtab->{$verb}) {
         s/ch(â)$/g$1/;
       }
     }
@@ -287,7 +396,7 @@ sub scrifel {
   }
 
   # front and back vowel alternations for Cadhinor verbs in -u-
-  if(exists $cadhu{$verb}) {
+  if(exists $cadhutab->{$verb}) {
     for(@$table) {
       s/i($cons+[uâ]?)$/o$1/;
       s/u($cons+[êiî]n?)$/i$1/;
@@ -309,17 +418,14 @@ sub izhcrifel {
 
   return $izhcrifel{$verb} if exists $izhcrifel{$verb};
 
-  if(! defined($class) && exists $class{$verb}) {
-    $class = $class{$verb};
+  if(! defined($class) && exists $classtab->{$verb}) {
+    $class = $classtab->{$verb};
   }
 
-  $class = 2 if $verb =~ /a$/;
-  $class = 4 if $verb =~ /i$/;
+  $class = 2 if !defined($class) && $verb =~ /a$/;
+  $class = 3 if !defined($class) && $verb =~ /ê$/;
+  $class = 4 if !defined($class) && $verb =~ /i$/;
   $class = 0 unless defined $class;
-
-  if($verb =~ /ê$/ && !defined($class)) {
-    return; croak "Can't determine declension for verb $verb";
-  }
 
   if($class == 1 && $stem =~ s/ê$//) {
     $table = [ map "$stem$_", qw( ri rî êr rê rê rîn ) ];
@@ -332,7 +438,7 @@ sub izhcrifel {
   } elsif($class == 5 && $stem =~ s/ê$//) {
     $table = [ map "$stem$_", qw( ri rê êr rê rê rên ) ];
   } else {
-    return; croak "Can't determine declension for verb $verb";
+    return;
   }
 
   return $table;
@@ -350,19 +456,16 @@ sub budemeric {
 
   return $budemeric{$verb} if exists $budemeric{$verb};
 
-  return demeric($subj{$verb}, $class) if exists $subj{$verb};
+  return demeric($subjtab->{$verb}, $class) if exists $subjtab->{$verb};
 
-  if(! defined($class) && exists $class{$verb}) {
-    $class = $class{$verb};
+  if(! defined($class) && exists $classtab->{$verb}) {
+    $class = $classtab->{$verb};
   }
 
-  $class = 2 if $verb =~ /a$/;
-  $class = 4 if $verb =~ /i$/;
+  $class = 2 if !defined($class) && $verb =~ /a$/;
+  $class = 3 if !defined($class) && $verb =~ /ê$/;
+  $class = 4 if !defined($class) && $verb =~ /i$/;
   $class = 0 unless defined $class;
-
-  if($verb =~ /ê$/ && !defined($class)) {
-    return; croak "Can't determine declension for verb $verb";
-  }
 
   if($class == 1 && $stem =~ s/ê$/t/) {
     $table = [ map "$stem$_", qw( a ê ê u u ôn ) ];
@@ -384,7 +487,7 @@ sub budemeric {
       s/tu$/chu/;
     }
   } else {
-    return; croak "Can't determine declension for verb $verb";
+    return;
   }
 
   return $table;
@@ -403,19 +506,16 @@ sub buscrifel {
 
   return $buscrifel{$verb} if exists $buscrifel{$verb};
 
-  return scrifel($subj{$verb}, $class) if exists $subj{$verb};
+  return scrifel($subjtab->{$verb}, $class) if exists $subjtab->{$verb};
 
-  if(! defined($class) && exists $class{$verb}) {
-    $class = $class{$verb};
+  if(! defined($class) && exists $classtab->{$verb}) {
+    $class = $classtab->{$verb};
   }
 
-  $class = 2 if $verb =~ /a$/;
-  $class = 4 if $verb =~ /i$/;
+  $class = 2 if !defined($class) && $verb =~ /a$/;
+  $class = 3 if !defined($class) && $verb =~ /ê$/;
+  $class = 4 if !defined($class) && $verb =~ /i$/;
   $class = 0 unless defined $class;
-
-  if($verb =~ /ê$/ && !defined($class)) {
-    return; croak "Can't determine declension for verb $verb";
-  }
 
   if($class == 1 && $stem =~ s/ê$/k/) {
     $table = [ map "$stem$_", qw( a ê ê u u ôn ) ];
@@ -437,7 +537,7 @@ sub buscrifel {
       s/r$/ir/;
     }
   } else {
-    return; croak "Can't determine declension for verb $verb";
+    return;
   }
 
   return $table;
@@ -455,17 +555,14 @@ sub befel {
 
   return $befel{$verb} if exists $befel{$verb};
 
-  if(! defined($class) && exists $class{$verb}) {
-    $class = $class{$verb};
+  if(! defined($class) && exists $classtab->{$verb}) {
+    $class = $classtab->{$verb};
   }
 
-  $class = 2 if $verb =~ /a$/;
-  $class = 4 if $verb =~ /i$/;
+  $class = 2 if !defined($class) && $verb =~ /a$/;
+  $class = 3 if !defined($class) && $verb =~ /ê$/;
+  $class = 4 if !defined($class) && $verb =~ /i$/;
   $class = 0 unless defined $class;
-
-  if($verb =~ /ê$/ && !defined($class)) {
-    return; croak "Can't determine declension for verb $verb";
-  }
 
   if($class == 1 && $stem =~ s/ê$//) {
     $table = [ map "$stem$_", '', '', 'a', '', 'êl', 'an' ];
@@ -478,14 +575,14 @@ sub befel {
   } elsif($class == 5 && $stem =~ s/ê$//) {
     $table = [ map "$stem$_", '', '', 'a', '', 'u',  'an' ];
   } else {
-    return; croak "Can't determine declension for verb $verb";
+    return;
   }
 
   for(@$table) {
     # Cadhinor verbs in -c- and -g-
-    if(exists $cadhc{$verb}) {
+    if(exists $cadhctab->{$verb}) {
       s/k([eiêîû]?)$/ch/;
-    } elsif(exists $cadhg{$verb}) {
+    } elsif(exists $cadhgtab->{$verb}) {
       s/g([eiêîû]?)$/ch/;
     }
 
@@ -531,17 +628,14 @@ sub part {
   if(exists $part{$verb}) {
     ($present, $past) = @{ $part{$verb} };
   } else {
-    if(! defined($class) && exists $class{$verb}) {
-      $class = $class{$verb};
+    if(! defined($class) && exists $classtab->{$verb}) {
+      $class = $classtab->{$verb};
     }
 
-    $class = 2 if $verb =~ /a$/;
-    $class = 4 if $verb =~ /i$/;
+    $class = 2 if !defined($class) && $verb =~ /a$/;
+    $class = 3 if !defined($class) && $verb =~ /ê$/;
+    $class = 4 if !defined($class) && $verb =~ /i$/;
     $class = 0 unless defined $class;
-
-    if($verb =~ /ê$/ && !defined($class)) {
-      return; croak "Can't determine declension for verb $verb";
-    }
 
     if($class == 1 && $stem =~ s/ê$//) {
       ($past, $present) = map "$stem$_", 'êl', 'il';
@@ -554,16 +648,16 @@ sub part {
     } elsif($class == 5 && $stem =~ s/ê$//) {
       ($past, $present) = map "$stem$_", 'êl', 'ê';
     } else {
-      return; croak "Can't determine declension for verb $verb";
+      return;
     }
   }
 
   for($past, $present) {
     # Cadhinor verbs in -c- and -g-
-    if(exists $cadhc{$verb}) {
+    if(exists $cadhctab->{$verb}) {
       s/ch([auoâô])$/k/;
       s/k([eiêîû])$/ch/;
-    } elsif(exists $cadhg{$verb}) {
+    } elsif(exists $cadhgtab->{$verb}) {
       s/ch([auoâô]?)$/g/;
       s/g([eiêîû])$/ch/;
     }
@@ -576,7 +670,7 @@ sub part {
 
 
 
-my %gender = (
+$gendertab = {
   'âshta' => 'masc',
   'eli' => 'masc',
   'lônd' => 'masc',
@@ -602,9 +696,9 @@ my %gender = (
   'adlelek' => 'fem',
   'adlelu' => 'fem',
   'air' => 'fem',
-); # %gender
+}; # $gendertab
 
-my %plural = (
+$pluraltab = {
   'âshta' => 'âshtâ',
   'eli' => 'eliri',
   'lônd' => 'lôndi',
@@ -622,7 +716,7 @@ my %plural = (
   'nor' => 'norê',
 
   'âdhechu' => 'âdhechuni',
-); # %plural
+}; # $pluraltab
 
 sub noun {
   my $noun = shift;
@@ -645,8 +739,11 @@ sub noun {
 
   # otherwise it's a noun.
 
-  if(!defined($gender) && exists $gender{$noun}) {
-    $gender = $gender{$noun};
+  # irregular oblique stem
+  return [ qw( pû pû pea peo pei peî peich ) ] if $noun eq 'pû';
+
+  if(!defined($gender) && exists $gendertab->{$noun}) {
+    $gender = $gendertab->{$noun};
   }
 
   if(!defined($gender)) {
@@ -655,9 +752,7 @@ sub noun {
       $gender = 'masc';
     } elsif($noun =~ /ê$/) {
       $gender = 'fem';
-    } elsif($noun =~ /u$/) {
-      $gender = 'neut';
-    } elsif($noun =~ /$cons$/o && defined $plural && $plural =~ /i$/) {
+    } elsif($noun =~ /$consend/o && defined $plural && $plural =~ /i$/) {
       $gender = 'masc'; # can't detect anisosyllabic nouns as they
                         # could be neuter
     } elsif($noun =~ /(?:$cons|i)$/o && defined $plural && $plural =~ /[ou]$/) {
@@ -669,21 +764,23 @@ sub noun {
     } elsif($noun =~ /â$/ && defined $plural && $plural =~ /ach$/) {
       $gender = 'fem';
     } else {
-      return; croak "Can't determine gender for noun $noun";
+      return;
     }
   }
 
-  if(!defined($plural) && exists $plural{$noun}) {
-    $plural = $plural{$noun};
+  if(!defined($plural) && exists $pluraltab->{$noun}) {
+    $plural = $pluraltab->{$noun};
   }
 
   if(!defined($plural)) {
     # try to guess based on the ending
-    if($noun =~ /$cons$/o && $gender eq 'masc') {
+    if($noun =~ /$consend/o && $gender eq 'masc') {
       $plural = $noun . 'i'; # assume isosyllabic
     } elsif($noun =~ /a$/ && $gender eq 'masc') {
       ($plural = $noun) =~ s/a$/â/;
-    } elsif($noun =~ /$cons$/o && $gender eq 'neut') {
+    } elsif($noun =~ /u$/ && $gender eq 'masc') {
+      $plural = $noun . 'li'; # assume from -ul
+    } elsif($noun =~ /$consend/o && $gender eq 'neut') {
       $plural = $noun . 'o'; # more than twice as comman as -u
     } elsif($noun =~ /i$/ && $gender eq 'neut') {
       ($plural = $noun) =~ s/i$/u/;
@@ -691,8 +788,10 @@ sub noun {
       ($plural = $noun) =~ s/u$/i/;
     } elsif($noun =~ /â$/ && $gender eq 'neut') {
       ($plural = $noun) =~ s/â$/ao/;
-    } elsif($noun =~ /$cons$/o && $gender eq 'fem') {
+    } elsif($noun =~ /$consend/o && $gender eq 'fem') {
       $plural = $noun . 'â'; # "very common"
+    } elsif($noun =~ /u$/ && $gender eq 'fem') {
+      $plural = $noun . 'lâ'; # assume from -ul
     } elsif($noun =~ /i$/ && $gender eq 'fem') {
       $plural = $noun . 'ê';
     } elsif($noun =~ /ê$/ && $gender eq 'fem') {
@@ -700,7 +799,7 @@ sub noun {
     } elsif($noun =~ /â$/ && $gender eq 'fem') {
       ($plural = $noun) =~ s/â/achâ/;
     } else {
-      return; croak "Can't determine plural for noun $noun";
+      return;
     }
   }
 
@@ -708,20 +807,23 @@ sub noun {
   my $plstem = $plural;
 
   if($gender eq 'masc') {
-    if($plstem =~ s/i$//) {
+    if($sgstem =~ /u$/ && $plstem =~ s/li$//) {
+      $table = [ map("$sgstem$_", '', '', 'la', 'lo'),
+                 map("$plstem$_", 'li', 'lî', 'lich') ];
+    } elsif($plstem =~ s/i$//) {
       $table = [ map("$sgstem$_", '', '', 'a', 'o'),
                  map("$plstem$_", 'i', 'î', 'ich') ];
     } elsif($sgstem =~ s/a$// && $plstem =~ s/â$//) {
       $table = [ map("$sgstem$_", 'a', '', 'a', 'o'),
                  map("$plstem$_", 'â', 'î', 'ach') ];
     } else {
-      return; croak "Unknown masculine declension for singular $noun and plural $plural";
+      return;
     }
   } elsif($gender eq 'neut') {
-    if($sgstem =~ /$cons$/o && $plstem =~ s/o$//) {
+    if($sgstem =~ /$consend/o && $plstem =~ s/o$//) {
       $table = [ map("$sgstem$_", '', 'u', 'u', 'o'),
                  map("$plstem$_", 'o', 'oi', 'och') ];
-    } elsif($sgstem =~ /$cons$/o && $plstem =~ s/u$//) {
+    } elsif($sgstem =~ /$consend/o && $plstem =~ s/u$//) {
       $table = [ map("$sgstem$_", '', 'u', 'u', 'o'),
                  map("$plstem$_", 'u', 'î', 'ich') ];
     } elsif($sgstem =~ s/i$// && $plstem =~ s/u$//) {
@@ -734,13 +836,13 @@ sub noun {
       $table = [ map("$sgstem$_", 'â', 'â', 'â', 'ach'),
                  map("$plstem$_", 'ao', 'aoi', 'aoch') ];
     } else {
-      return; croak "Unknown neuter declension for singular $noun and plural $plural";
+      return;
     }
   } elsif($gender eq 'fem') {
-    if($sgstem =~ /$cons$/o && $plstem =~ s/â$//) {
+    if($sgstem =~ /$consend/o && $plstem =~ s/â$//) {
       $table = [ map("$sgstem$_", '', 'a', 'ê', 'ach'),
                  map("$plstem$_", 'â', 'êi', 'ech') ];
-    } elsif($sgstem =~ /$cons$/o && $plstem =~ s/ê$//) {
+    } elsif($sgstem =~ /$consend/o && $plstem =~ s/ê$//) {
       $table = [ map("$sgstem$_", '', 'e', 'ê', 'ech'),
                  map("$plstem$_", 'ê', 'êi', 'ech') ];
     } elsif($sgstem =~ /i$/ && $plstem =~ s/iê/i/) {
@@ -752,11 +854,17 @@ sub noun {
     } elsif($sgstem =~ s/â$// && $plstem =~ s/â$//) {
       $table = [ map("$sgstem$_", 'â', 'a', 'ê', 'ach'),
                  map("$plstem$_", 'â', 'a', 'ech') ];
+    } elsif($sgstem =~ /u$/ && $plstem =~ s/lâ$//) {
+      $table = [ map("$sgstem$_", '', 'la', 'lê', 'lach'),
+                 map("$plstem$_", 'lâ', 'lêi', 'lech') ];
+    } elsif($sgstem =~ /u$/ && $plstem =~ s/â$//) { # chizu; others?
+      $table = [ map("$sgstem$_", '', 'a', 'ê', 'ach'),
+                 map("$plstem$_", 'â', 'êi', 'ech') ];
     } else {
-      return; croak "Unknown neuter declension for singular $noun and plural $plural";
+      return;
     }
   } else {
-    return; croak "Unknown gender $gender";
+    return;
   }
 
   return $table;
@@ -765,9 +873,22 @@ sub noun {
 
 # Lost consonants which are restored in all but s.nom. and m.s.acc.
 
-my %rootcons = (
-  'na' => 'n',
-); # %rootcons
+$rootconstab = {
+  'andû'  => 'r',
+  'aveku' => 'r',
+  'dhu'   => 'n',
+  'di'    => 'n',
+  'du'    => 'r',
+  'glûmu' => 'l',
+  'kê'    => 'r',
+  'kônu'  => 'l',
+  'kû'    => 'r',
+  'melhu' => 'r',
+  'mu'    => 'r',
+  'na'    => 'n',
+  'osôku' => 'l',
+  'rhu'   => 'm',
+}; # $rootconstab
 
 sub adj {
   my $adj = shift;
@@ -775,13 +896,13 @@ sub adj {
   my $stem = $adj;
   my $table;
 
-  if(!defined($rootcons) && exists $rootcons{$adj}) {
-    $rootcons = $rootcons{$adj};
+  if(!defined($rootcons) && exists $rootconstab->{$adj}) {
+    $rootcons = $rootconstab->{$adj};
   }
 
   $rootcons = '' unless defined $rootcons;
 
-  if($stem =~ /$cons$/o || length $rootcons) {
+  if($stem =~ /$consend/o || length $rootcons) {
     $table = [ [ $stem, $stem, map "$stem$rootcons$_", qw( a o i î ich ) ],
                [ $stem, map "$stem$rootcons$_", qw( u u o o î ich ) ],
                [ $stem, map "$stem$rootcons$_", qw( a ê ach â êi ech ) ] ];
@@ -793,13 +914,16 @@ sub adj {
     $table = [ [ map "$stem$_", 'i', '', qw( i io i î ich ) ],
                [ map "$stem$_", qw( i i i io u î ich ) ],
                [ map "$stem$_", qw( i i iê ich iê ia iech ) ] ];
+  } elsif($stem =~ s/â$//) {
+    $table = [ [ map "$stem$_", qw( â â â ach ao aoi aoch ) ],
+               [ map "$stem$_", qw( â â â ach ao aoi aoch ) ],
+               [ map "$stem$_", qw( â a ê ach achâ acha achech ) ] ];
   } else {
-    return; croak "Unknown declension for adjective $adj";
+    return;
   }
 
   return $table;
 }
-
 
 1;
 __END__
@@ -810,8 +934,8 @@ Lingua::Zompist::Barakhinei - Inflect Barakhinei nouns, verbs, and adjectives
 
 =head1 VERSION
 
-This document refers to version 0.01 of Lingua::Zompist::Barakhinei, released
-on 2002-05-24.
+This document refers to version 0.02 of Lingua::Zompist::Barakhinei, released
+on 2002-06-26.
 
 =head1 SYNOPSIS
 
@@ -826,23 +950,46 @@ or
 or
 
   use Lingua::Zompist::Barakhinei qw( demeric scrifel );
-  $you_know = demeric('shkrivê')->[1];
-  $they_had = crifel('tenê')->[5];
+  $you_know = demeric("shkriv\xea", 1)->[1];
+  $they_had = crifel("ten\xea", 1)->[5];
+  # note "\xea" = e with circumflex
 
   
-  $word = noun('belu');  # nouns
-  $word = noun('sû');    # pronouns
+  # nouns and pronouns
+  $word = noun('belu', 'masc', 'beluri');  # nouns
+  $word = noun("s\xfb");    # pronouns ("\xfb" is u with circumflex: su^)
   $word = noun('mukh');
-  $word = adj('khôtê');  # adjectives
+  # in general
+  $word = noun( NOUN [, GENDER [, PLURAL ] ] );
+
+  # adjectives
+  $word = adj("kh\xf4t\xea");  # adjectives (ho^te^)
 
   # verbs
-  $word = demeric('ibrê');      # present
-  $word = scrifel('ibrê');      # past
-  $word = izhcrifel('ibrê');    # past anterior
-  $word = budemeric('ibrê');    # present subjunctive
-  $word = buscrifel('ibrê');    # past subjunctive
-  $word = befel('ibrê');        # imperative
-  $word = part('ibrê');         # participles
+  # note: "ibr\xea" is ibre^
+  $word = demeric("ibr\xea", 1);   # present
+  $word = scrifel("ibr\xea", 1);   # past
+  $word = izhcrifel("ibr\xea", 1); # past anterior
+  $word = budemeric("ibr\xea", 1); # present subjunctive
+  $word = buscrifel("ibr\xea", 1); # past subjunctive
+  $word = befel("ibr\xea", 1);     # imperative
+  $word = part("ibr\xea", 1);      # participles
+  # in general
+  $word = FUNC( VERB [, CLASS ] );
+
+  # Setting inflection tables
+  # nouns
+  $Lingua::Zompist::Barakhinei::gendertab = \%mygendertab;
+  $Lingua::Zompist::Barakhinei::pluraltab = \%mypluraltab;
+  # verbs
+  $Lingua::Zompist::Barakhinei::classtab = \%myclasstab;
+
+  # ones that you will probably not need as often
+  $Lingua::Zompist::Barakhinei::rootconstab = \%myrootconstab;
+  $Lingua::Zompist::Barakhinei::subjtab = \%mysubjtab;
+  $Lingua::Zompist::Barakhinei::cadhctab = \%mycadhctab;
+  $Lingua::Zompist::Barakhinei::cadhgtab = \%mycadhgtab;
+  $Lingua::Zompist::Barakhinei::cadhutab = \%mycadhutab;
 
 =head1 DESCRIPTION
 
@@ -883,7 +1030,9 @@ that charset and standard charsets such as iso-8859-1 and utf-8.
 
 This function allows you to inflect nouns and pronouns.
 
-It takes three arguments:
+It takes three arguments. All but the first are optional (and the
+function will guess or use entries from L</$gendertab> and/or
+L</$pluraltab> if they are not provided).
 
 =over 4
 
@@ -893,13 +1042,14 @@ The noun or pronoun to inflect.
 
 =item *
 
-The gender of the noun (one of 'masc', 'neut', or 'fem'), or C<undef>
-for the function to guess. (This can remain C<undef> for pronouns.)
+(optional) The gender of the noun (one of 'masc', 'neut', or 'fem'), or
+C<undef> for the function to guess. (This can remain C<undef> for
+pronouns.)
 
 =item *
 
-The (nominative) plural of the noun, or C<undef> for the function to
-guess.
+(optional) The (nominative) plural of the noun, or C<undef> for the
+function to guess.
 
 In Barakhinei, it is necessary to know the singular, the gender, B<and>
 the plural of a noun in order to inflect a noun correctly. However, if
@@ -908,9 +1058,9 @@ the function will attempt to guess based on a built-in list of nouns.
 
 =back
 
-C<noun> returns an arrayref on success, or croaks on failure (for
-example, because it could not determine which declension or gender a
-noun belonged to).
+C<noun> returns an arrayref on success, or C<undef> or the empty list on
+failure (for example, because it could not determine which declension or
+gender a noun belonged to).
 
 In general, the arrayref will have seven elements, in the following
 order: nominative singular, accusative singular, dative singular,
@@ -969,14 +1119,16 @@ The adjective to be inflected
 
 =item *
 
-The root consonant in the oblique forms (for example, for I<na> "north",
-which has the root I<nan-> in the oblique forms, pass in C<'na'> and
-C<'n'>). If you pass in undef, the function will attempt to guess
-whether the adjective has a different oblique stem.
+(optional) The root consonant in the oblique forms (for example, for
+I<na> "north", which has the root I<nan-> in the oblique forms, pass in
+C<'na'> and C<'n'>). If you pass in undef for this argument or simply
+leave it out, the function will attempt to guess whether the adjective
+has a different oblique stem (using L</$rootconstab>).
 
 =back
 
-C<adj> returns an arrayref on success and croaks on failure.
+C<adj> returns an arrayref on success and C<undef> or the empty list on
+failure.
 
 The arrayref will itself contain three arrayrefs, each with seven
 elements. The first arrayref will contain the masculine forms, the
@@ -1009,13 +1161,15 @@ The verb to be conjugated
 
 =item *
 
-The declension of the verb as an integer (only strictly necessary for
-verbs in I<-E<ecirc>>, which can be first, third, or fifth declension,
-corresponding to Cadhinor verbs in I<-EC>, I<-EN>, and I<-ER>)
+(optional) The declension of the verb as an integer (only strictly
+necessary for verbs in I<-E<ecirc>>, which can be first, third, or fifth
+declension, corresponding to Cadhinor verbs in I<-EC>, I<-EN>, and
+I<-ER>)
 
 =back
 
-C<demeric> returns an arrayref on success and croaks on failure.
+C<demeric> returns an arrayref on success and C<undef> or the empty list
+on failure.
 
 The arrayref will contain six elements, in the following order: first
 person singular ("I"), second person singular ("thou"), third person
@@ -1070,7 +1224,7 @@ This function returns the two participles of a verb. It takes the verb
 and declension number (compare L</demeric>) as an argument and returns
 an arrayref (in scalar context) or a list (in list context) of two
 elements: the present participle and the past participle. On failure,
-this function croaks.
+this function returns C<undef> or the empty list.
 
 Specifically, the form returned for each participle is the masculine
 nominative singular form of the participle (which is the citation form).
@@ -1079,13 +1233,155 @@ consonant of 'l' in the case of participles in I<-u>), the other forms
 of the participles may be obtained by calling the L<adj|/"adj">
 function, if desired.
 
+=head2 Tables
+
+Since inflection in Barakhinei usually cannot be determined by the
+ending alone, this module makes use of lookup tables to provide
+additional information. For example, nouns ending in a consonant can be
+masculine, feminine, or neuter; if the gender is not passed explicitly
+to the L</noun> function, that function attempts first to lookup the
+gender in a table, and if that fails, it attempts to guess the gender
+from the ending. Similarly with verb inflections or with the plural of
+nouns.
+
+This section describes the various lookup tables which the module uses
+to perform its inflection tasks. All the tables described here can be
+overridden from the outside; this is most useful for C<$gendertab>,
+C<$pluraltab>, and C<$classtab>, which do not come pre-filled since they
+would be fairly large.
+
+It is up to you how you fill those tables -- you can leave them empty,
+the way they come, and explicitly pass the necessary information to each
+function; you can fill the tables from a hash which you initialise
+statically in your code; you can read in the data from a file each time;
+or you could use a tied hash (say, a DBM file). The last can be useful
+if you only want to make a couple of requests and don't want to load the
+entire database into memory; simply tie the data to a hash in your
+program and assign a reference to that hash to the appropriate variable.
+
+Sample tables, generated programmatically from baralex.htm as of
+2002-05-29 and hand-massaged slightly afterwards, are included as
+tab-separated value files: F<class.tsv>, F<gender.tsv>, and
+F<plural.tsv>. It will be trivial to convert those to any representation
+you desire. There may also be other tab-separated value files in the
+distribution; have a look. Their purpose should be obvious from the
+filename.
+
+These are the lookup tables which are used by the program and which can
+be influenced from outside:
+
+=over 4
+
+=item $gendertab
+
+This is a hashref whose keys are nouns and whose values are one of
+C<'masc'>, C<'fem'>, or C<'neut'>. This is used to determine the gender
+of nouns. For example:
+
+  san => 'neut',
+
+indicating that the noun I<san> is neuter.
+
+=item $pluraltab
+
+This is a hashref whose keys are nouns and whose values are the plural
+form of the noun. For example:
+
+  ibor => 'ibro',
+
+indicating that the (nominative) plural of the noun I<ibor> is I<ibro>.
+
+=item $classtab
+
+This is a hashref whose keys are verbs and whose values are the
+declension number. First declension verbs end in I<-E<ecirc>> and derive
+from Cadhinor verbs in I<-EC>; second declension verbs end in I<-a> and
+derive from Cadhinor verbs in I<-AN>; third declension verbs end in
+I<-E<ecirc>> and derive from Cadhinor verbs in I<-EN>; fourth declension
+verbs end in I<-i> and derive from Cadhinor verbs in I<-IR>; fifth
+declension verbs end in I<-E<ecirc>> and derive from Cadhinor verbs in
+I<-ER>.
+
+Strictly speaking, entries in this hashref are necessary only for first
+and fifth declension verbs; second and fourth declension verbs can be
+identified by their endings alone, and verbs ending in I<-E<ecirc>> are
+taken to be third declension if no other declension is specified.
+
+An example entry is
+
+  "hab\xea" => 5,
+
+indicating that the verb I<habE<ecirc>> is a fifth declension verb. (In
+your source code, you'd probably write C<hab\xea> as C<habE<ecirc>>.)
+
+=item $rootconstab
+
+This is a hashref whose keys are adjectives and whose values are the
+extra consonant which is added to the end in the oblique forms, for
+first declension adjectives such as I<na, nan->. This would be listed as
+
+  na => 'n',
+
+You may not need to add to this table, as there aren't that many of
+these adjectives, and the ones listed in baralex.htm as of 2002-05-29
+should already be in the module.
+
+=item $subjtab
+
+This is a hashref whose keys are verbs and whose values are the
+subjunctive forms of those verbs. This is used for verbs which use a
+different subjunctive stem (derived from Cadhinor verbs with a separate
+remote stem), for example
+
+  laoda => 'loda',
+
+which indicates that the subjunctive stem of I<laoda> is I<lod->. As
+indicated in the example, the final letter of the subjunctive stem
+should be the same as that of the normal infinitive; effectively, it is
+as if the subjunctive of those verbs is the indicative of another verb.
+
+You may not need to add to this table, as there aren't that many of
+these verbs, and the ones listed in baralex.htm as of 2002-05-29 should
+already be in the module.
+
+=item $cadhctab
+
+This is a hashref whose keys are verbs which derive from a Cadhinor verb
+with a I<-C-> stem consonant. The value is not used (but it is a good
+idea to have the value be true; for example, you could use the Cadhinor
+infinitive). This is used because verbs deriving from Cadhinor verbs in
+I<-C-> suffer consonant changes in some forms. Compare L</$cadhgtab>.
+
+You will probably not need to add to or replace this table.
+
+=item $cadhgtab
+
+This is a hashref whose keys are verbs which derive from a Cadhinor verb
+with a I<-G-> stem consonant. The value is not used (but it is a good
+idea to have the value be true; for example, you could use the Cadhinor
+infinitive). This is used because verbs deriving from Cadhinor verbs in
+I<-G-> suffer consonant changes in some forms. Compare L</$cadhctab>.
+
+You will probably not need to add to or replace this table.
+
+=item $cadhutab
+
+This is a hashref whose keys are verbs which derive from a Cadhinor verb
+with a I<-U-> in the last syllable of the verb stem. The value is not
+used (but it is a good idea to have the value be true; for example, you
+could use the Cadhinor infinitive). This is used because verbs deriving
+from Cadhinor verbs with I<-U-> suffer vowel changes in some forms.
+Compare L</$cadhctab> and L</$cadhgtab>.
+
+=back
+
 =head1 BUGS
 
 This module should handle irregular words correctly. However, if there
 is a word that is inflected incorrectly, please send me email and notify
 me. (Since Barakhinei has all sorts of funky sound changes, I wouldn't
 be surprised if this module makes mistakes! However, I think it handles
-correctly all the examples on the web page as of 2002-05-24.)
+correctly all the examples on the web page as of 2002-05-29.)
 
 However, please make sure that you have checked against a current
 version of http://www.zompist.com/bara.htm or that you asked Mark
@@ -1094,7 +1390,34 @@ are found or words change.
 
 =head1 TODO
 
+=over 4
+
+=item *
+
 Flesh out the dictionary from baralex.htm.
+
+=item *
+
+document masculines & feminines in -u (decline like adjectives)
+
+=item *
+
+test masculines & feminines in -u (e.g. rizundu = m/f, klE<acirc>tandu =
+m, redE<ecirc>lu = f)
+
+=item *
+
+test adjectives in -E<acirc>: mudrE<acirc>, shkrE<acirc>
+
+=item *
+
+test pE<ucirc>/pe-
+
+=item *
+
+test verbs with different subjunctive stems
+
+=back
 
 =head1 SEE ALSO
 

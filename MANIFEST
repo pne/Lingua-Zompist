@@ -4,6 +4,14 @@ MANIFEST
 MANIFEST.SKIP
 README
 Barakhinei.pm
+class.tsv
+gender.tsv
+plural.tsv
+cadhc.tsv
+cadhg.tsv
+cadhu.tsv
+rootcons.tsv
+subj.tsv
 t/01_base.t
 t/02_demeric.t
 t/03_scrifel.t

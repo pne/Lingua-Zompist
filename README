@@ -1,4 +1,4 @@
-Lingua/Zompist/Barakhinei version 0.01
+Lingua/Zompist/Barakhinei version 0.02
 ======================================
 
 Lingua::Zompist::Barakhinei is a module which allows you to inflect
@@ -11,7 +11,7 @@ tense or mood and another for the participles.
 
 CHANGES SINCE THE LAST VERSION
 
-This is the first version of Lingua::Zompist::Barakhinei.
+Added pluggable interface for various grammatical structures.
 
 For changes in previous versions, see the file "Changes".
 
@@ -31,6 +31,8 @@ This module requires these other modules and libraries:
   Test::More (v0.19 or higher)
 
 COPYRIGHT AND LICENCE
+
+(This is basically the BSD licence.)
 
 Copyright (C) 2001, 2002 by Philip Newton.  All rights reserved.
 

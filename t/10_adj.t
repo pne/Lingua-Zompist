@@ -9,7 +9,7 @@ use Carp;
 
 BEGIN { use_ok 'Lingua::Zompist::Barakhinei', 'adj' }
 
-sub form_ok {
+sub form_ok ($$$) {
     # croak 'usage: form_ok($adj, $is, $should)' unless @_ >= 3;
     my($adj, $is, $should) = @_;
 
