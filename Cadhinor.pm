@@ -54,7 +54,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS %verb);
 @EXPORT = qw(
 	
 );
-$VERSION = '0.91';
+$VERSION = '0.92';
 
 %verb = (
   static => {
@@ -813,7 +813,7 @@ Lingua::Zompist::Cadhinor - Inflect Cadhinor nouns, verbs, and adjectives
 
 =head1 VERSION
 
-This document refers to version 0.91 of Lingua::Zompist::Cadhinor,
+This document refers to version 0.92 of Lingua::Zompist::Cadhinor,
 released on 2002-05-20.
 
 =head1 SYNOPSIS

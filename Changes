@@ -1,7 +1,19 @@
 Revision history for Perl extension Lingua::Zompist::Cadhinor.
 
+0.92 2002-05-20
+	- Forgot to update Changes & README for version 0.91.
+	No changes to code or tests in this version.
+
+0.91 2002-05-20
+	- Added TAS, MUKH, CAI, ZA to the forms recognised by
+	noun()
+	- Added dynamic imperatives (which do not trigger sound
+	changes)
+	- Correctly treat imperatives of verbs which have a
+	separate remote stem
+
 0.90 2002-05-19
-        - minor documentation nits. No changes to code or tests.
+	- minor documentation nits. No changes to code or tests.
 
 0.04 2001-11-15
 	- minor documentation nits. No changes to code or tests.

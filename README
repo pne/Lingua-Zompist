@@ -1,4 +1,4 @@
-Lingua/Zompist/Cadhinor version 0.90
+Lingua/Zompist/Cadhinor version 0.92
 =====================================
 
 Lingua::Zompist::Cadhinor is a module which allows you to inflect Cadhinor
@@ -11,12 +11,13 @@ adverbs from them. Finally, there are several functions to inflect verbs,
 depending on the aspect, mood, and tense, and a function to form the
 participles of a verb.
 
-CHANGES FROM VERSION 0.04
+CHANGES FROM VERSION 0.90
 
-Changed a minor typo ("Cadhionr"). Added "FEEDBACK" section. Changed
-"regents" to "copyright holders" in the licence.
+Added TAS, MUKH, CAI, ZA to the forms recognised by noun().
 
-No changes to code or tests.
+Added dynamic imperatives (which do not trigger sound changes).
+
+Correctly treat imperatives of verbs which have a separate remote stem.
 
 For changes in previous versions, see the "Changes" file.
 
