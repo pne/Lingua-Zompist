@@ -54,7 +54,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS %verb);
 @EXPORT = qw(
 	
 );
-$VERSION = '0.01';
+$VERSION = '0.02';
 
 %verb = (
   static => {
@@ -784,7 +784,7 @@ Lingua::Zompist::Cadhinor - Inflect Cadhinor nouns, verbs, and adjectives
 
 =head1 VERSION
 
-This document refers to version 0.01 of Lingua::Zompist::Cadhinor.
+This document refers to version 0.02 of Lingua::Zompist::Cadhinor.
 
 =head1 SYNOPSIS
 
@@ -931,6 +931,24 @@ There is currently no function which returns the declension of an adjective
 -<cons>/-O/-A, second declension in -ES/-E/-IES, and third declension in
 -IS/-IS/-IS; however, if there is popular demand for such a function it could
 be quickly added.
+
+=head2 comp
+
+This function returns the comparative form of an adjective (as, "higher" from
+"high"). It takes one argument (the adjective to inflect) and returns the
+comparative form, or C<undef> on failure.
+
+=head2 super
+
+This function returns the superlative form of an adjective (as, "highest" from
+"high"). It takes one argument (the adjective to inflect) and returns the
+superlative form, or C<undef> on failure.
+
+=head2 adv
+
+This function returns the adverb corresponding to an adjective (as, "highly"
+from "high"). It takes one argument (the adjective) and returns the
+corresponding adverb, or C<undef> on failure.
 
 =head2 demeric
 

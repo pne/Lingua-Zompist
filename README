@@ -1,4 +1,4 @@
-Lingua/Zompist/Cadhinor version 0.01
+Lingua/Zompist/Cadhinor version 0.02
 =====================================
 
 Lingua::Zompist::Cadhinor is a module which allows you to inflect Cadhinor
@@ -10,6 +10,11 @@ for inflect adjectives and to form comparative and superlative forms as well as
 adverbs from them. Finally, there are several functions to inflect verbs,
 depending on the aspect, mood, and tense, and a function to form the
 participles of a verb.
+
+CHANGES FROM VERSION 0.01
+
+There were no significant changes. I had simply forgotten to document three
+functions. The code has stayed exactly the same.
 
 INSTALLATION
 
