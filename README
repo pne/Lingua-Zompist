@@ -1,4 +1,4 @@
-Lingua/Zompist/Verdurian version 0.04
+Lingua/Zompist/Verdurian version 0.05
 =====================================
 
 Lingua::Zompist::Verdurian is a module which allows you to inflect Verdurian
@@ -11,13 +11,7 @@ one for each tense or mood and another for the participles.
 
 CHANGES SINCE THE LAST VERSION
 
-Changed 3rd person plural past of 'esan' from 'esneu' to 'esnu'
-
-Changed handling of verbs which insert an -i- in the past tense
-
-More tests for vers which need an inserted -i-
-
-Made 'didha' masculine
+Small doc tweaks only. No changes to code or tests since version 0.04.
 
 For changes in previous versions, see the file "Changes".
 

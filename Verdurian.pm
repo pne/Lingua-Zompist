@@ -32,7 +32,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 	
 );
-$VERSION = '0.04';
+$VERSION = '0.05';
 
 my %verb = (demeric => \&demeric,
             scrifel => \&scrifel,
@@ -667,8 +667,8 @@ Lingua::Zompist::Verdurian - Inflect Verdurian nouns, verbs, and adjectives
 
 =head1 VERSION
 
-This document refers to version 0.03 of Lingua::Zompist::Verdurian, released
-on 2001-11-15.
+This document refers to version 0.05 of Lingua::Zompist::Verdurian, released
+on 2002-04-11.
 
 =head1 SYNOPSIS
 
@@ -820,7 +820,7 @@ function L<demeric|/"demeric">.
 
 However, note that I<esan> behaves slightly differently in the past tense.  The
 third person singular and plural form returned are I<fue/esne> and
-I<fueu/esneu>. I<fue> and I<fueu> are the normal forms for "he/she/it was" and
+I<fueu/esnu>. I<fue> and I<fueu> are the normal forms for "he/she/it was" and
 "they were", but I<esne> and I<esneu> are used in an existential sense, as
 "there was" and "there were". (For example, F<Ver2Eng.doc> gives I<esne mudray>
 as "there was a wise man" and I<fue mudray> as "he was wise".)
@@ -830,9 +830,11 @@ as "there was a wise man" and I<fue mudray> as "he was wise".)
 =item Note
 
 http://www.zompist.com/morphology.htm only mentions I<esne> in this sense, but
-I believe I<esneu> should also be possible. F<Ver2Eng.doc>, on the other hand,
-gives a full complement of forms I<esnai, esnei, esne, esnam, esno, esnu>, but
-I don't think those are all correct.
+I believe I<esnu> should also be possible. F<Ver2Eng.doc>, on the other hand,
+gives a full complement of forms I<esnai, esnei, esne, esnam, esno, esnu>,
+which I suppose could be used for sentences such as "and suddenly I wasn't
+any more". In general, however, I think only the third person forms of the
+existential forms are used.
 
 =back
 

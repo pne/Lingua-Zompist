@@ -2,6 +2,11 @@
 
 Revision history for Perl extension Lingua::Zompist::Verdurian.
 
+0.05  Thu 2002-04-11
+	- Slight doc tweaks (it still thought it was version
+	0.03, and 'esneu' was still in the docs).
+	No changes to code or tests.
+
 0.04  Tue 2002-04-02
 	- Changed past tense of 'esan' from 'esneu' to 'esnu'
 	- Slightly modified the licence (changed 'regents' to
