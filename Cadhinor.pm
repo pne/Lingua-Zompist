@@ -54,7 +54,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS %verb);
 @EXPORT = qw(
 	
 );
-$VERSION = '0.04';
+$VERSION = '0.90';
 
 %verb = (
   static => {
@@ -781,7 +781,8 @@ Lingua::Zompist::Cadhinor - Inflect Cadhinor nouns, verbs, and adjectives
 
 =head1 VERSION
 
-This document refers to version 0.04 of Lingua::Zompist::Cadhinor.
+This document refers to version 0.90 of Lingua::Zompist::Cadhinor,
+released on 2002-05-19.
 
 =head1 SYNOPSIS
 
@@ -860,7 +861,7 @@ example:
 
   use Lingua::Zompist::Cadhinor qw(:all %verb);
   # or
-  use Lingua::Zompist::Cadhionr '%verb';
+  use Lingua::Zompist::Cadhinor '%verb';
 
 =head2 Capitalisation and character set
 
@@ -926,7 +927,7 @@ This function should determine the declension of an adjective automatically.
 There is currently no function which returns the declension of an adjective
 (partly because the matter is so simple -- first declension adjectives end in
 -<cons>/-O/-A, second declension in -ES/-E/-IES, and third declension in
--IS/-IS/-IS; however, if there is popular demand for such a function it could
+-IS/-IS/-IS); however, if there is popular demand for such a function it could
 be quickly added.
 
 =head2 comp
@@ -1084,6 +1085,12 @@ http://www.zompist.com/native.htm or F<PreCadh.doc>, or that you asked Mark
 Rosenfelder himself; the grammar occasionally changes as small errors are found
 or words change.
 
+=head1 FEEDBACK
+
+If you use this module, then I'd appreciate hearing about it, just so I
+have an idea of how many people use it. Drop me a line at the address
+listed in L</AUTHOR>.
+
 =head1 SEE ALSO
 
 L<Lingua::Zompist::Kebreni>, L<Lingua::Zompist::Verdurian>,
@@ -1094,9 +1101,11 @@ http://www.zompist.com/embassy.htm#learning )
 
 Philip Newton, E<lt>pne@cpan.orgE<gt>
 
-=head1 COPYRIGHT AND LICENSE
+=head1 COPYRIGHT AND LICENCE
 
-Copyright (C) 2001 by Philip Newton.  All rights reserved.
+[This is basically the BSD licence.]
+
+Copyright (C) 2001, 2002 by Philip Newton.  All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
@@ -1116,15 +1125,16 @@ other materials provided with the distribution.
 
 =back
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE FOR ANY
-DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
-ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
