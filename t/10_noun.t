@@ -4,7 +4,7 @@
 
 #########################
 
-use Test::More tests => 672;
+use Test::More tests => 680;
 use Carp;
 
 use Lingua::Zompist::Verdurian 'noun';
@@ -206,3 +206,5 @@ form_ok('rhena', noun('rhena'), [ qw( rhena rhenei rhena rhenan
                                       rhenai rhenaë rhenam rhenain ) ]);
 form_ok('didha', noun('didha'), [ qw( didha didhei didha didhan
                                       didhai didhaë didham didhain ) ]);
+form_ok('vyozha', noun('vyozha'), [ qw( vyozha vyozhei vyozha vyozhan
+                                        vyozhai vyozhaë vyozham vyozhain ) ]);

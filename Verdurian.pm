@@ -32,7 +32,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 	
 );
-$VERSION = '0.06';
+$VERSION = '0.90';
 
 my %verb = (demeric => \&demeric,
             scrifel => \&scrifel,
@@ -431,6 +431,7 @@ my %masc = (
   hezhiosa => 1,
   rhena => 1,
   didha => 1,
+  vyozha => 1,
 );
 
 sub noun {
@@ -453,6 +454,10 @@ sub noun {
   return [ qw( il  lië  iler  ilon ca caë cam can ) ] if $noun eq 'il';
   return [ qw( ze  zië  zet   zen  za zaë zam zan ) ] if $noun eq 'ze';
   return [ qw( tu  tuë  tu/tü tun ), (undef) x 4    ] if $noun eq 'tu';
+  return [ qw( ta  taë  tam   tan ), (undef) x 4    ] if $noun eq 'ta';
+  return [ qw( mu  muë  mü    mun ), (undef) x 4    ] if $noun eq 'mu';
+  return [ qw( ca  caë  cam   can ), (undef) x 4    ] if $noun eq 'ca';
+  return [ qw( za  zaë  zam   zan ), (undef) x 4    ] if $noun eq 'za';
 
   # relative or interrogative pronoun?
   if($stem =~ s/^((?:if|nib|ti)?k)e$/$1/) {
@@ -667,8 +672,8 @@ Lingua::Zompist::Verdurian - Inflect Verdurian nouns, verbs, and adjectives
 
 =head1 VERSION
 
-This document refers to version 0.06 of Lingua::Zompist::Verdurian, released
-on 2002-04-21.
+This document refers to version 0.90 of Lingua::Zompist::Verdurian, released
+on 2002-05-20.
 
 =head1 SYNOPSIS
 
@@ -689,6 +694,7 @@ or
   
   $word = noun('cuon');  # nouns
   $word = noun('se');    # pronouns
+  $word = noun('mu');
   $word = adj('haute');  # adjectives
   $word = adj('so');     # definite article
 
@@ -763,10 +769,16 @@ Some special notes:
 
 =item *
 
-The personal pronouns I<ta>, I<mu>, I<ca>, and I<za> are not recognised by
-this function; rather, they are returned as part of I<se>, I<le>, I<ilu> /
-I<ila> / I<il>, and I<ze> respectively. So to find out the genitive of I<we>,
-look for the genitive plural of I<I>.
+If you use a singular personal pronoun as input to this function, you
+will get back an arrayref with right elements, corresponding to both
+singular and plural forms of the pronoun.
+
+If you use a plural personal pronoun as input to this function, only the
+first four elements will be filled (with the plural forms) and the last
+four elements will be C<undef>. This appears to be more DWIMmish (at
+least, it is for me -- I've used I<ta>, for example, as input and
+wondered why it was being treated as a feminine noun rather than as a
+personal pronoun).
 
 =item *
 
@@ -902,6 +914,13 @@ L<Lingua::Zompist::Cadhinor>,
 http://www.zompist.com/verdurian.htm,
 http://www.zompist.com/morphology.htm
 
+=head1 FEEDBACK
+
+If you use this module, I'd appreciate it if you drop me a line at the
+email address in L</AUTHOR>, just so that I have an idea of how many
+people use this module at all. Also, if you have any comments, feel free
+to email me.
+
 =head1 AUTHOR
 
 Philip Newton, E<lt>pne@cpan.orgE<gt>
@@ -928,15 +947,16 @@ other materials provided with the distribution.
 
 =back
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY
-DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
-ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut

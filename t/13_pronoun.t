@@ -4,7 +4,7 @@
 
 #########################
 
-use Test::More tests => 144;
+use Test::More tests => 160;
 use Carp;
 
 use Lingua::Zompist::Verdurian 'noun';
@@ -49,6 +49,10 @@ form_ok('il', noun('il'), [ qw( il lië iler ilon
 form_ok('ze', noun('ze'), [ qw( ze zië zet zen
                                 za zaë zam zan ) ]);
 sg_form_ok('tu', noun('tu'), [ qw( tu tuë tu/tü tun ) ]);
+sg_form_ok('ta', noun('ta'), [ qw( ta taë tam tan ) ]);
+sg_form_ok('mu', noun('mu'), [ qw( mu muë mü  mun ) ]);
+sg_form_ok('ca', noun('ca'), [ qw( ca caë cam can ) ]);
+sg_form_ok('za', noun('za'), [ qw( za zaë zam zan ) ]);
 
 
 # Relative and interrogative pronouns
