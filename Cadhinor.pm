@@ -54,7 +54,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS %verb);
 @EXPORT = qw(
 	
 );
-$VERSION = '0.90';
+$VERSION = '0.91';
 
 %verb = (
   static => {
@@ -92,6 +92,9 @@ $VERSION = '0.90';
 # Set up aliases
 {
   my($aspect, $mood, $tense);
+
+  $verb{'nuncre'} = $verb{'static'};
+  $verb{'olocec'} = $verb{'dynamic'};
 
   for $aspect (qw(static dynamic)) {
     $verb{$aspect}{definite} = $verb{$aspect}{prilise};
@@ -411,22 +414,43 @@ sub bubefel {
   my $verb = shift;
   my $stem = $verb;
 
-  if($stem =~ s/$far/FASC/o ||
+  if($stem =~ s/$far/FASS/o ||
+     $stem =~ s/^CURREC$/CORS/ ||
      $stem =~ s/EC$//) {
     return [ undef, map ( "$stem$_", qw( E UAS  ) ),
              undef, map ( "$stem$_", qw( EL UANT ) ) ];
   } elsif($stem =~ s/$kes/KAIV/o ||
+          $stem =~ s/^METTAN$/MESS/ ||
+          $stem =~ s/^DAN$/DON/ ||
+          $stem =~ s/^PU([GH])AN$/PO$1/ ||
+          $stem =~ s/^BRIGAN$/BROG/ ||
+          $stem =~ s/^SUBRAN$/SOBR/ ||
+          $stem =~ s/^LEGAN$/LOG/ ||
+          $stem =~ s/^LAUDAN$/LOD/ ||
+          $stem =~ s/^KUSAN$/KOSS/ ||
           $stem =~ s/AN$//) {
     return [ undef, map ( "$stem$_", qw( I UAT ) ),
              undef, map ( "$stem$_", qw( IL UANT ) ) ];
   } elsif($stem =~ s/$nen/NES/o ||
+          $stem =~ s/^([DKL]E|TO)SCEN$/$1SS/ ||
+          $stem =~ s/^(DES|FER)IEN$/$1S/ ||
+          $stem =~ s/^LEILEN$/LELS/ ||
+          $stem =~ s/^KETHEN$/KOTH/ ||
           $stem =~ s/EN$//) {
     return [ undef, map ( "$stem$_", qw( I UAT ) ),
              undef, map ( "$stem$_", qw( IL UANT ) ) ];
-  } elsif($stem =~ s/ER$//) {
+  } elsif($stem =~ s/^([SV])ALTER$/$1ELS/ ||
+          $stem =~ s/^STERER$/STERS/ ||
+          $stem =~ s/^NOER$/NOS/ ||
+          $stem =~ s/ER$//) {
     return [ undef, map ( "$stem$_", qw( U AS ) ),
              undef, map ( "$stem$_", qw( UL ANT ) ) ];
-  } elsif($stem =~ s/IR$//) {
+  } elsif($stem =~ s/^MERIR$/MERS/ ||
+          $stem =~ s/^NURIR$/NORS/ ||
+          $stem =~ s/^AMARIR$/AMERS/ ||
+          $stem =~ s/^DUCIR$/DOC/ ||
+          $stem =~ s/^IUSIR$/IOSS/ ||
+          $stem =~ s/IR$//) {
     return [ undef, map ( "$stem$_", qw( U UAT ) ),
              undef, map ( "$stem$_", qw( UL UANT ) ) ];
   } else {
@@ -489,13 +513,17 @@ sub dynamic {
       } else {
         return;
       }
+    } else {
+      return;
     }
   } else {
     return;
   }
 
   # Stem change
-  if($verb =~ /[AEIOU][TDP](?:[IE]R|[AE]N|EC)$/ && !exists $borrowed{$verb} &&
+  if($dyntense{$tense} ne 'befel' && # imperative endings don't trigger
+                                     # sound changes
+     $verb =~ /[AEIOU][TDP](?:[IE]R|[AE]N|EC)$/ && !exists $borrowed{$verb} &&
      ($verb !~ /ATIR$/ || $verb eq 'CLATIR')) {
     for(@$table) {
       # UI UIS UT UAT UAM UAS UANT
@@ -581,6 +609,10 @@ my %noun = (
   TU   => [ qw( TU  TUAE TUA TUN  TOTH   CAI  CAIE CAIM CAIN CAITH ) ],
   ZE   => [ undef, qw( ZEHIE ZETH  ZEHUN ZEHOTH ),
             undef, qw( ZAHIE ZAHAM ZAHAN ZAHATH ) ],
+  TAS  => [ qw( TAS  TAIE TAIM TAUN TAD   ), (undef) x 5 ],
+  MUKH => [ qw( MUKH MUIE MUIM MUIN MUOTH ), (undef) x 5 ],
+  CAI  => [ qw( CAI  CAIE CAIM CAIN CAITH ), (undef) x 5 ],
+  ZA   => [ undef, qw( ZAHIE ZAHAM ZAHAN ZAHATH ), (undef) x 5 ],
 
   # possessive adjectives:
   # SEO  -> ERIS
@@ -781,8 +813,8 @@ Lingua::Zompist::Cadhinor - Inflect Cadhinor nouns, verbs, and adjectives
 
 =head1 VERSION
 
-This document refers to version 0.90 of Lingua::Zompist::Cadhinor,
-released on 2002-05-19.
+This document refers to version 0.91 of Lingua::Zompist::Cadhinor,
+released on 2002-05-20.
 
 =head1 SYNOPSIS
 
@@ -826,8 +858,8 @@ released on 2002-05-19.
   $table = $verb{dynamic}{remote}{past}->('SCRIFEC');
 
   # verbs -- via the %verb hash -- in Verdurian/Cadhinor
-  $table = $verb{static}{prilise}{demeric}->('SCRIFEC');
-  $table = $verb{dynamic}{buprilise}{scrifel}->('SCRIFEC');
+  $table = $verb{nuncre}{prilise}{demeric}->('SCRIFEC');
+  $table = $verb{olocec}{buprilise}{scrifel}->('SCRIFEC');
 
 =head1 DESCRIPTION
 
@@ -898,13 +930,24 @@ in I<-IS> which is not recognised correctly, please send me email.
 
 =over 4
 
-=item Note
+=item *
 
-The personal pronouns I<TAS>, I<MUKH>, and I<CAI>, as well as the forms
-I<ZAHIE, ZAHAM, ZAHAN, ZAHATH> are not recognised by this function; rather,
-they are returned as part of I<SEO>, I<LET>, I<TU>, and I<ZE> respectively. So
-to find out the genitive of I<we>, look for the genitive plural of I<I>. The
-pseudo-nominative corresponding to the accusative I<ZETH> is I<ZE> (borrowed
+If you use the singular of a personal pronoun (I<SEO>, I<LET>, I<TU>, or
+the pseudo-nominative I<ZE>), then you will get both the singular and
+the plural forms of that pronoun as the ten elements of the resulting
+arrayref.
+
+=item *
+
+If you use the plural of a personal pronoun (I<TAS>, I<MUKH>, I<CAI>, or
+the pseudo-nominative I<ZA>), then you will get the plural forms as the
+first five elements of the arrayref. The last five elements will be
+C<undef>.
+
+=item *
+
+The pseudo-nominative corresponding to the accusative I<ZETH> is
+I<ZE>; that corresponding to its plural forms is I<ZA> (borrowed
 from Verdurian).
 
 =back
@@ -1048,7 +1091,10 @@ This will place an arrayref with the forms of the static remote present of
 the verb "SCRIFEC" in C<$table>. It is also possible to use the
 Verdurian/Cadhinor names of the moods and tenses:
 
-  $table = $verb{static}{buprilise}{demeric}->('SCRIFEC');
+  $table = $verb{nuncre}{buprilise}{demeric}->('SCRIFEC');
+
+The Verdurian/Cadhinor names for I<static> and I<dynamic> are I<nuncre>
+and I<olocec>, respectively.
 
 For convenience, it is also possible to use an abbreviated notation. Since
 I suppose that the most common aspect is the static aspect, and the most
@@ -1059,9 +1105,9 @@ if you wish. So the following should all yield the same result:
   $table = $verb{definite}{past}->('SCRIFEC');
   $table = $verb{static}{past}->('SCRIFEC');
   $table = $verb{past}->('SCRIFEC');
-  $table = $verb{static}{prilise}{scrifel}->('SCRIFEC');
+  $table = $verb{nuncre}{prilise}{scrifel}->('SCRIFEC');
   $table = $verb{prilise}{scrifel}->('SCRIFEC');
-  $table = $verb{static}{scrifel}->('SCRIFEC');
+  $table = $verb{nuncre}{scrifel}->('SCRIFEC');
   $table = $verb{scrifel}->('SCRIFEC');
 
 As a special nod to laziness, if you use C<{imperative}> or C<{befel}> without

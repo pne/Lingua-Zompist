@@ -4,13 +4,13 @@
 
 #########################
 
-use Test::More tests => 517;
+use Test::More tests => 583;
 use Carp;
 
 BEGIN { use_ok 'Lingua::Zompist::Cadhinor', 'dynamic'; }
 
 sub form_ok {
-    croak 'usage: form_ok($verb, $is, $should)' unless @_ >= 3;
+    croak 'usage: form_ok($verb, $is, $should)' unless @_ == 3;
     my($verb, $is, $should) = @_;
 
     is($is->[0], $should->[0], "I.sg. of $verb");
@@ -130,3 +130,32 @@ form_ok('GGGEN', dynamic('GGGEN', 'buprilise', 'scrifel'), [ qw( GGGISI GGGISUS 
 form_ok('GGGER', dynamic('GGGER', 'buprilise', 'scrifel'), [ qw( GGGISI GGGISUS GGGISAT GGGISAM GGGISAS GGGISANT ) ]);
 form_ok('GGGIR', dynamic('GGGIR', 'buprilise', 'scrifel'), [ qw( GGGISI GGGISUS GGGISAT GGGISAM GGGISAS GGGISANT ) ]);
 
+# dynamic remote imperative -- should be the same as as static remote imperative
+
+sub imp_ok {
+    croak 'usage: imp_ok($verb, $is, $should)' unless @_ == 3;
+    my($verb, $is, $should) = @_;
+
+    is($is->[0], undef,        "I.sg. of $verb");
+    is($is->[1], $should->[0], "II.sg. of $verb");
+    is($is->[2], $should->[1], "III.sg. of $verb");
+    is($is->[3], undef,        "I.pl. of $verb");
+    is($is->[4], $should->[2], "II.pl. of $verb");
+    is($is->[5], $should->[3], "III.pl. of $verb");
+}
+
+imp_ok('DUMEC',  dynamic('DUMEC', 'buprilise', 'befel'), [ qw( DUME  DUMUAS  DUMEL  DUMUANT  ) ]);
+imp_ok('KEKAN',  dynamic('KEKAN', 'buprilise', 'befel'), [ qw( KEKI  KEKUAT  KEKIL  KEKUANT  ) ]);
+imp_ok('NOMEN',  dynamic('NOMEN', 'buprilise', 'befel'), [ qw( NOMI  NOMUAT  NOMIL  NOMUANT  ) ]);
+imp_ok('CLAGER', dynamic('CLAGER','buprilise', 'befel'), [ qw( CLAGU CLAGAS  CLAGUL CLAGANT  ) ]);
+imp_ok('PARIR',  dynamic('PARIR', 'buprilise', 'befel'), [ qw( PARU  PARUAT  PARUL  PARUANT  ) ]);
+
+# test verb with separate remote stem
+imp_ok('LAUDAN', dynamic('LAUDAN','buprilise', 'befel'), [ qw( LODI  LODUAT  LODIL  LODUANT  ) ]);
+
+# test general forms
+imp_ok('GGGEC',  dynamic('GGGEC', 'buprilise', 'befel'), [ qw( GGGE  GGGUAS  GGGEL  GGGUANT  ) ]);
+imp_ok('GGGAN',  dynamic('GGGAN', 'buprilise', 'befel'), [ qw( GGGI  GGGUAT  GGGIL  GGGUANT  ) ]);
+imp_ok('GGGEN',  dynamic('GGGEN', 'buprilise', 'befel'), [ qw( GGGI  GGGUAT  GGGIL  GGGUANT  ) ]);
+imp_ok('GGGER',  dynamic('GGGER', 'buprilise', 'befel'), [ qw( GGGU  GGGAS   GGGUL  GGGANT   ) ]);
+imp_ok('GGGIR',  dynamic('GGGIR', 'buprilise', 'befel'), [ qw( GGGU  GGGUAT  GGGUL  GGGUANT  ) ]);

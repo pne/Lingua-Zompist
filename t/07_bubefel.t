@@ -4,7 +4,8 @@
 
 #########################
 
-use Test::More tests => 61;
+# add 6 for each new test, not 4
+use Test::More tests => 67;
 use Carp;
 
 BEGIN { use_ok 'Lingua::Zompist::Cadhinor', 'bubefel'; }
@@ -26,6 +27,9 @@ form_ok('KEKAN',  bubefel('KEKAN' ), [ qw( KEKI  KEKUAT  KEKIL  KEKUANT  ) ]);
 form_ok('NOMEN',  bubefel('NOMEN' ), [ qw( NOMI  NOMUAT  NOMIL  NOMUANT  ) ]);
 form_ok('CLAGER', bubefel('CLAGER'), [ qw( CLAGU CLAGAS  CLAGUL CLAGANT  ) ]);
 form_ok('PARIR',  bubefel('PARIR' ), [ qw( PARU  PARUAT  PARUL  PARUANT  ) ]);
+
+# test verb with separate remote stem
+form_ok('LAUDAN', bubefel('LAUDAN'), [ qw( LODI  LODUAT  LODIL  LODUANT  ) ]);
 
 # test general forms
 form_ok('GGGEC',  bubefel('GGGEC' ), [ qw( GGGE  GGGUAS  GGGEL  GGGUANT  ) ]);
