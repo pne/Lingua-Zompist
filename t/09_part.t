@@ -31,13 +31,8 @@ form_ok('xxxir', scalar(part('xxxir')), [ qw( xxxec xxxul xxxäm ) ]);
 form_ok('xxxer', scalar(part('xxxer')), [ qw( xxxec xxxul xxxäm ) ]);
 form_ok('xxxec', scalar(part('xxxec')), [ qw( xxxë  xxxul xxxäm ) ]);
 
-form_ok('dan', scalar(part('dan')), [ qw( dec dul däm ) ]);
-
-TODO: {
-    local $TODO = 'kies has no participle yet';
-
-    form_ok('kies', scalar(part('kies')), [ qw( kaivec kaivul kaiväm ) ]);
-}
+form_ok('dan',  scalar(part('dan' )), [ qw( donec  donul  donäm  ) ]);
+form_ok('kies', scalar(part('kies')), [ qw( kaivec kaivul kaiväm ) ]);
 
 # I think 'fassec' should conjugate like this:
 form_ok('fassec', scalar(part('fassec')), [ qw( fassë fassul fassäm ) ]);
@@ -57,12 +52,8 @@ form_ok('xxxir', [ part('xxxir') ], [ qw( xxxec xxxul xxxäm ) ]);
 form_ok('xxxer', [ part('xxxer') ], [ qw( xxxec xxxul xxxäm ) ]);
 form_ok('xxxec', [ part('xxxec') ], [ qw( xxxë  xxxul xxxäm ) ]);
 
-form_ok('dan', [ part('dan') ], [ qw( dec dul däm ) ]);
-TODO: {
-    local $TODO = 'kies has no participle yet';
-
-    form_ok('kies', [ part('kies') ], [ qw( kaivec kaivul kaiväm ) ]);
-}
+form_ok('dan',  [ part('dan' ) ], [ qw( donec  donul  donäm  ) ]);
+form_ok('kies', [ part('kies') ], [ qw( kaivec kaivul kaiväm ) ]);
 
 # I think 'fassec' should conjugate like this:
 form_ok('fassec', [ part('fassec') ], [ qw( fassë fassul fassäm ) ]);

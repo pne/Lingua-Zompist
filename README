@@ -1,4 +1,4 @@
-Lingua/Zompist/Verdurian version 0.01
+Lingua/Zompist/Verdurian version 0.02
 =====================================
 
 Lingua::Zompist::Verdurian is a module which allows you to inflect Verdurian
@@ -8,6 +8,13 @@ definite article.
 There is one function to inflect nouns and pronouns, and another to inflect
 adjectives and the definite article. Verbs are covered by several functions:
 one for each tense or mood and another for the participles.
+
+CHANGES SINCE THE LAST VERSION
+
+'kies' now has participles (with stem kaiv-). The participles for 'dan'
+are fixed (stem don- rather than d-).
+
+These are the only changes between version 0.01 and 0.02.
 
 INSTALLATION
 

@@ -32,7 +32,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 	
 );
-$VERSION = '0.01';
+$VERSION = '0.02';
 
 my %verb = (demeric => \&demeric,
             scrifel => \&scrifel,
@@ -386,24 +386,36 @@ sub classimp {
 }
 
 
+my %part = (
+  dan  => [ qw(donec  donul  donäm ) ],
+  kies => [ qw(kaivec kaivul kaiväm) ],
+);
+
+
 # Participles
 sub part {
   my $verb = shift;
 
-  my($present, $past, $gerund) = ($verb) x 3;
+  my($present, $past, $gerund);
 
-  return unless $verb =~ /(?:ec|[ea]n|[ie]r)$/;
+  if(exists $part{$verb}) {
+    ($present, $past, $gerund) = @{ $part{$verb} };
+  } else {
+    return unless $verb =~ /(?:ec|[ea]n|[ie]r)$/;
 
-  for($present) {
-    s/ec$/ë/ || s/(?:[ie]r|[ea]n)$/ec/;
-  }
+    ($present, $past, $gerund) = ($verb) x 3;
 
-  for($past) {
-    s/(?:ec|[ea]n|[ie]r)$/ul/;
-  }
+    for($present) {
+      s/ec$/ë/ || s/(?:[ie]r|[ea]n)$/ec/;
+    }
 
-  for($gerund) {
-    s/(?:ec|[ea]n|[ie]r)$/äm/;
+    for($past) {
+      s/(?:ec|[ea]n|[ie]r)$/ul/;
+    }
+
+    for($gerund) {
+      s/(?:ec|[ea]n|[ie]r)$/äm/;
+    }
   }
 
   return wantarray ? ($present, $past, $gerund) : [ $present, $past, $gerund ];
@@ -654,8 +666,8 @@ Lingua::Zompist::Verdurian - Inflect Verdurian nouns, verbs, and adjectives
 
 =head1 VERSION
 
-This document refers to version 0.01 of Lingua::Zompist::Verdurian, released
-on 2001-10-27.
+This document refers to version 0.02 of Lingua::Zompist::Verdurian, released
+on 2001-11-14.
 
 =head1 SYNOPSIS
 
