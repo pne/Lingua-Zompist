@@ -39,7 +39,7 @@ form_ok('esta', noun('esta'), [ qw( esta estei esta estan
 form_ok('rana', noun('rana'), [ qw( rana rane rana ranan
                                     ranî ranië ranem ranen ) ]);
 form_ok('lavísia', noun('lavísia'), [ qw( lavísia lavísë lavísiam lavísian
-                                          lavísiî lavísië lavisem lavisen ) ]);
+                                          lavísiî lavísië lavísem lavísen ) ]);
 form_ok('casi', noun('casi'), [ qw( casi casë casa casin
                                     casî casië casem casin ) ]);
 form_ok('leve', noun('leve'), [ qw( leve levei leva leven
@@ -48,8 +48,8 @@ form_ok('gurë', noun('gurë'), [ qw( gurë gurëi gurä guren
                                     gurî gurië gurem guren ) ]);
 
 # final accent remains on the ending
-form_ok('aknó', noun('aknó'), [ qw( aknó aknei aknám aknón
-                                    aknoi aknoë aknóm aknoin ) ]);
+form_ok('aknó', noun('aknó'), [ qw( aknó aknéi aknám aknón
+                                    aknói aknoë aknóm aknóin ) ]);
 form_ok('pisá', noun('pisá'), [ qw( pisá pisé pisá pisán
                                     pisí pisië pisém pisén ) ]);
 
@@ -74,7 +74,7 @@ form_ok('aklog', noun('aklog'), [ qw( aklog aklogei aklog aklogán
 form_ok('ánselcud', noun('ánselcud'), [ qw( ánselcud ánselcudei ánselcud anselcudán
                                             ánselcuzî ánselcuzië ánselcuzi ánselcuzin ) ]);
 form_ok('barsúc', noun('barsúc'), [ qw( barsúc barsúcei barsúc barsucán
-                                        barsusî barsúsië barsusi barsusin ) ]);
+                                        barsúsî barsúsië barsúsi barsúsin ) ]);
 form_ok('belac', noun('belac'), [ qw( belac belacei belac belacán
                                       belasî belasië belasi belasin ) ]);
 form_ok('boc', noun('boc'), [ qw( boc bocei boc bocán
@@ -98,9 +98,9 @@ form_ok('dhac', noun('dhac'), [ qw( dhac dhacei dhac dhacán
 form_ok('dhiec', noun('dhiec'), [ qw( dhiec dhiecei dhiec dhiecán
                                       dhiesî dhiesië dhiesi dhiesin ) ]);
 form_ok('ecelóg', noun('ecelóg'), [ qw( ecelóg ecelógei ecelóg ecelogán
-                                        ecelozhi ecelózhië ecelozhi ecelozhin ) ]);
+                                        ecelózhi ecelózhië ecelózhi ecelózhin ) ]);
 form_ok('etalóg', noun('etalóg'), [ qw( etalóg etalógei etalóg etalogán
-                                        etalozhi etalózhië etalozhi etalozhin ) ]);
+                                        etalózhi etalózhië etalózhi etalózhin ) ]);
 form_ok('ferica', noun('ferica'), [ qw( ferica ferice ferica ferican
                                         ferisî ferisië ferisem ferisen ) ]);
 form_ok('fifachic', noun('fifachic'), [ qw( fifachic fifachicei fifachic fifachicán
@@ -169,16 +169,16 @@ form_ok('gggá', noun('gggá'), [ qw( gggá gggé gggá gggán
                                     gggí gggië gggém gggén ) ]);
 form_ok('gggo', noun('gggo'), [ qw( gggo gggei gggam gggon
                                     gggoi gggoë gggom gggoin ) ]);
-form_ok('gggó', noun('gggó'), [ qw( gggó gggei gggám gggón
-                                    gggoi gggoë gggóm gggoin ) ]);
+form_ok('gggó', noun('gggó'), [ qw( gggó gggéi gggám gggón
+                                    gggói gggoë gggóm gggóin ) ]);
 form_ok('gggu', noun('gggu'), [ qw( gggu gggui gggum gggun
                                     gggî ggguë gggom ggguin ) ]);
-form_ok('gggú', noun('gggú'), [ qw( gggú gggui gggúm gggún
-                                    gggí ggguë gggóm ggguin ) ]);
+form_ok('gggú', noun('gggú'), [ qw( gggú gggúi gggúm gggún
+                                    gggí ggguë gggóm gggúin ) ]);
 form_ok('gggiy', noun('gggiy'), [ qw( gggiy gggii gggiim gggiín
                                       gggiî gggië gggiom gggiuin ) ]);
-form_ok('gggíy', noun('gggíy'), [ qw( gggíy gggii gggiim gggiín
-                                      gggiî gggíë gggiom gggíuin ) ]);
+form_ok('gggíy', noun('gggíy'), [ qw( gggíy gggíi gggíim gggiín
+                                      gggíî gggíë gggíom gggíuin ) ]);
 form_ok('gggy', noun('gggy'), [ qw( gggy gggii gggim gggín
                                     gggî ggguë gggom ggguin ) ]);
 # Can't test generic masculine in -a, but see further down
@@ -188,7 +188,7 @@ form_ok('gggí', noun('gggí'), [ qw( gggí gggë gggá gggín
                                     gggí gggië gggém gggín ) ]);
 form_ok('ggge', noun('ggge'), [ qw( ggge gggei ggga gggen
                                     gggî gggië gggem gggen ) ]);
-form_ok('gggé', noun('gggé'), [ qw( gggé gggei gggá gggén
+form_ok('gggé', noun('gggé'), [ qw( gggé gggéi gggá gggén
                                     gggí gggië gggém gggén ) ]);
 form_ok('gggë', noun('gggë'), [ qw( gggë gggëi gggä gggen
                                     gggî gggië gggem gggen ) ]);

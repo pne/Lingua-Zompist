@@ -54,5 +54,5 @@ form_ok('gggë', adj('gggë'), [ [ qw( gggë gggëi gggä gggén
 # final accent remains on the ending
 form_ok('munénë', adj('munénë'), [ [ qw( munénë munénëi munénä munenén
                                          munénëi munénëë munenóm munénëin ) ],
-                                   [ qw( munena munene munena munenan
-                                         munenî munénië munenem munenen ) ] ]);
+                                   [ qw( munéna munéne munéna munénan
+                                         munénî munénië munénem munénen ) ] ]);

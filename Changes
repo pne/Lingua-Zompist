@@ -2,11 +2,15 @@
 
 Revision history for Perl extension Lingua::Zompist::Verdurian.
 
+0.91  Mon 2002-05-20
+	- Added 'keep_accents' feature (Note: this will cause
+	some words to come out differently)
+
 0.90  Mon 2002-05-20
 	- 'vyozha' is masculine (unlike Cadhinor VIOCTA)
 	- Added ta, mu, ca, za to 'noun'
 	Getting close to a 1.0 release!
-	(TODO: add keep_accents)
+	(TODO: add keep_accents) DONE 2002-05-20
 
 0.06  Sun 2002-04-21
 	- Changed the future to insert the -i- only for Cl and

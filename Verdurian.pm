@@ -1,10 +1,11 @@
 package Lingua::Zompist::Verdurian;
+# vim:set tw=72 sw=2:
 
 use 5.005;
 use strict;
 
 require Exporter;
-use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
+use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS $keep_accents);
 @ISA = qw(Exporter);
 
 # Items to export into callers namespace by default. Note: do not export
@@ -32,7 +33,11 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 	
 );
-$VERSION = '0.90';
+$VERSION = '0.91';
+
+# Keep accents on words by default, even if the accented syllable would
+# be stressed anyway due to its position?
+$keep_accents = 1;
 
 my %verb = (demeric => \&demeric,
             scrifel => \&scrifel,
@@ -499,7 +504,9 @@ sub noun {
   } elsif($stem =~ s/iy$//) {
     $table = [ map "$stem$_", qw( iy ii iim iín iî ië iom iuin ) ];
   } elsif($stem =~ s/íy$//) {
-    $table = [ map "$stem$_", qw( íy ii iim iín iî íë iom íuin ) ];
+    $table = [ map "$stem$_", $keep_accents
+                              ? qw( íy íi íim iín íî íë íom íuin )
+                              : qw( íy ii iim iín iî íë iom íuin ) ];
   } elsif($stem =~ s/y$//) {
     $table = [ map "$stem$_", qw( y ii im ín î uë om uin ) ];
   } elsif($type eq 'masc' && $stem =~ s/a$//) {
@@ -513,15 +520,23 @@ sub noun {
   } elsif($type eq 'fem' && $stem =~ s/á$//) {
     $table = [ map "$stem$_", qw( á é á án í ië ém én ) ];
   } elsif($stem =~ s/ó$//) {
-    $table = [ map "$stem$_", qw( ó ei ám ón oi oë óm oin ) ];
+    $table = [ map "$stem$_", $keep_accents
+                              ? qw( ó éi ám ón ói oë óm óin )
+                              : qw( ó ei ám ón oi oë óm oin ) ];
   } elsif($stem =~ s/ú$//) {
-    $table = [ map "$stem$_", qw( ú ui úm ún í uë óm uin ) ];
+    $table = [ map "$stem$_", $keep_accents
+                              ? qw( ú úi úm ún í uë óm úin )
+                              : qw( ú ui úm ún í uë óm uin ) ];
   } elsif($type eq 'masc' && $stem =~ s/á$//) {
-    $table = [ map "$stem$_", qw( á ei á án ai aë ám ain ) ];
+    $table = [ map "$stem$_", $keep_accents
+                              ? qw( á éi á án ái aë ám áin )
+                              : qw( á ei á án ai aë ám ain ) ];
   } elsif($stem =~ s/í$//) {
     $table = [ map "$stem$_", qw( í ë á ín í ië ém ín ) ];
   } elsif($stem =~ s/é$//) {
-    $table = [ map "$stem$_", qw( é ei á én í ië ém én ) ];
+    $table = [ map "$stem$_", $keep_accents
+                              ? qw( é éi á én í ië ém én )
+                              : qw( é ei á én í ië ém én ) ];
   } else {
     return;
   }
@@ -562,9 +577,9 @@ sub noun {
     s/^dushi$c/dushis/o ||
     s/^dha$c/dhas/o ||
     s/^dhie$c/dhies/o ||
-    s/^ecelógî$/ecelozhi/ ||
+    s/^ecelógî$/ecelózhi/ ||
     s/^eceló$g/ecelózh/o ||
-    s/^etalógî$/etalozhi/ ||
+    s/^etalógî$/etalózhi/ ||
     s/^etaló$g/etalózh/o ||
     s/^feri$ca/feris/o ||
     s/^fifachi$c/fifachis/o ||
@@ -610,9 +625,11 @@ sub noun {
     s/^ya$g/yazh/o ||
     1;
 
-    # remove unnecessary accents: if the accented vowel is
-    # the penultimate vowel and the last vowel is not umlauted
-    s/([áéíóúÁÉÍÓÚ])(?=[pbtdhcgkfvszmnlr]*[aeiouî][pbtdhcgkfvszmnlr]*$)/$unacc{$1}/;
+    if(! $keep_accents) {
+      # remove unnecessary accents: if the accented vowel is
+      # the penultimate vowel and the last vowel is not umlauted
+      s/([áéíóúÁÉÍÓÚ])(?=[pbtdhcgkfvszmnlr]*[aeiouî][pbtdhcgkfvszmnlr]*$)/$unacc{$1}/;
+    }
   }
 
   return $table;
@@ -653,9 +670,11 @@ sub adj {
         s/om$/óm/;
       }
 
-      # remove unnecessary accents: if the accented vowel is
-      # the penultimate vowel and the last vowel is not umlauted
-      s/([áéíóúÁÉÍÓÚ])(?=[pbtdhcgkfvszmnlr]*[aeiouî][pbtdhcgkfvszmnlr]*$)/$unacc{$1}/;
+      if(! $keep_accents) {
+        # remove unnecessary accents: if the accented vowel is
+        # the penultimate vowel and the last vowel is not umlauted
+        s/([áéíóúÁÉÍÓÚ])(?=[pbtdhcgkfvszmnlr]*[aeiouî][pbtdhcgkfvszmnlr]*$)/$unacc{$1}/;
+      }
     }
   }
 
@@ -672,7 +691,7 @@ Lingua::Zompist::Verdurian - Inflect Verdurian nouns, verbs, and adjectives
 
 =head1 VERSION
 
-This document refers to version 0.90 of Lingua::Zompist::Verdurian, released
+This document refers to version 0.91 of Lingua::Zompist::Verdurian, released
 on 2002-05-20.
 
 =head1 SYNOPSIS
@@ -707,6 +726,13 @@ or
   $word = befel('ivrec');       # imperative
   $word = classimp('ivrec');    # "classical" imperative
   $word = part('ivrec');        # participles
+
+  # keep "unnecessary" accents or not
+  # Note: "lav\xedsia" is "lavi'sia"
+  $Lingua::Zompist::Verdurian::keep_accents = 1; # default
+  $word = noun("lav\xedsia")->[6]; # lavi'sem
+  $Lingua::Zompist::Verdurian::keep_accents = 0; # previous behaviour
+  $word = noun("lav\xedsia")->[6]; # lavisem
 
 =head1 DESCRIPTION
 
@@ -896,6 +922,26 @@ Since participles decline like declension I adjectives (or declension IV
 adjectives, in the case of present participles of verbs of the I<C>
 conjugation), the other forms of the participles may be obtained by calling the
 L<adj|/"adj"> function, if desired.
+
+=head2 $keep_accents
+
+This variable can be accessed via
+C<$Lingua::Zompist::Verdurian::keep_accents> . Setting it to a true
+value causes accents to be retained even when the accented syllable
+would be accented anyway due to its position. Setting it to a false
+value causes such "unnecessary" accents to be deleted. The default value
+of this variable is true.
+
+For example, the accusative plural of I<lavE<iacute>sia>
+(a dance) is I<lavE<iacute>sem> if the value of
+C<$Lingua::Zompist::Verdurian::keep_accents> is true
+(retaining the accent) and I<lavisem> if the value of
+C<$Lingua::Zompist::Verdurian::keep_accents> is false (removing
+the accent since the I<i> is accented anyway due to its being the
+penultimate vowel now).
+
+This variable only affects the declension of nouns and adjectives, not
+verbal conjugations.
 
 =head1 BUGS
 

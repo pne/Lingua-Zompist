@@ -17,3 +17,4 @@ t/10_noun.t
 t/11_adj.t
 t/12_article.t
 t/13_pronoun.t
+t/14_keep_accents.t

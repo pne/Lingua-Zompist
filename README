@@ -1,4 +1,4 @@
-Lingua/Zompist/Verdurian version 0.90
+Lingua/Zompist/Verdurian version 0.91
 =====================================
 
 Lingua::Zompist::Verdurian is a module which allows you to inflect Verdurian
@@ -11,10 +11,7 @@ one for each tense or mood and another for the participles.
 
 CHANGES SINCE THE LAST VERSION
 
-'vyozha' is masculine (unlike Cadhinor VIOCTA)
-
-You can now use the plural personal pronouns ta, mu, ca, and za as input
-to noun().
+Added variable $keep_accents; see documentation for its use.
 
 For changes in previous versions, see the file "Changes".
 
