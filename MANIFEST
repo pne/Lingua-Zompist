@@ -2,9 +2,8 @@ Changes
 Kebreni.pm
 Makefile.PL
 MANIFEST
+MANIFEST.SKIP
 README
 t/1_base.t
 t/2_pattern.t
 t/kebtest.dat
-t/lib/Test/More.pm
-t/lib/Test/Simple.pm

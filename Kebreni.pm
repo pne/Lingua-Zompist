@@ -10,7 +10,7 @@ require Exporter;
 
 use vars qw($VERSION @ISA @EXPORT_OK @EXPORT %EXPORT_TAGS);
 
-$VERSION = '0.41';
+$VERSION = '0.90';
 
 @ISA = qw(Exporter);
 
@@ -657,8 +657,8 @@ Lingua::Zompist::Kebreni - Inflect Kebreni verbs
 
 =head1 VERSION
 
-This documentation refers to version 0.4 of Lingua::Zompist::Kebreni,
-released on 23 September 2001.
+This documentation refers to version 0.90 of Lingua::Zompist::Kebreni,
+released on 2002-05-19.
 
 =head1 SYNOPSIS
 
@@ -957,13 +957,46 @@ Philip Newton, <pne@cpan.org>
 
 =head1 SEE ALSO
 
-http://www.zompist.com/kebreni.htm
+http://www.zompist.com/kebreni.htm, L<Lingua::Zompist::Cadhinor>,
+L<Lingua::Zompist::Verdurian>
 
-=head1 COPYRIGHT AND LICENSE
+=head1 COPYRIGHT AND LICENCE
 
-Copyright 2001 by Philip Newton
+[This is basically the BSD licence.]
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself. 
+Copyright (C) 2001, 2002 by Philip Newton. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+
+=over 4
+
+=item *
+
+Redistributions of source code must retain the above copyright notice,
+this list of conditions and the following disclaimer.
+
+=item *
+
+Redistributions in binary form must reproduce the above copyright notice,
+this list of conditions and the following disclaimer in the
+documentation and/or other materials provided with the distribution.
+
+=back
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND
+CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
 
 =cut
