@@ -54,7 +54,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS %verb);
 @EXPORT = qw(
 	
 );
-$VERSION = '0.03';
+$VERSION = '0.04';
 
 %verb = (
   static => {
@@ -781,7 +781,7 @@ Lingua::Zompist::Cadhinor - Inflect Cadhinor nouns, verbs, and adjectives
 
 =head1 VERSION
 
-This document refers to version 0.03 of Lingua::Zompist::Cadhinor.
+This document refers to version 0.04 of Lingua::Zompist::Cadhinor.
 
 =head1 SYNOPSIS
 
@@ -1044,7 +1044,7 @@ example:
   $table = $verb{static}{remote}{present}->('SCRIFEC');
 
 This will place an arrayref with the forms of the static remote present of
-the verb "SCRIFEL" in C<$table>. It is also possible to use the
+the verb "SCRIFEC" in C<$table>. It is also possible to use the
 Verdurian/Cadhinor names of the moods and tenses:
 
   $table = $verb{static}{buprilise}{demeric}->('SCRIFEC');
@@ -1063,7 +1063,7 @@ if you wish. So the following should all yield the same result:
   $table = $verb{static}{scrifel}->('SCRIFEC');
   $table = $verb{scrifel}->('SCRIFEC');
 
-As a special nod to laziness, if you use {imperative} or {befel} without
+As a special nod to laziness, if you use C<{imperative}> or C<{befel}> without
 specifying a mood, remote rather than the definite mood is chosen, since there
 is no definite imperative in Cadhinor. So C<< $verb{befel}->('CREGEN')->[1] >>
 and C<< $verb{static}{imperative}->('CREGEN')->[1] >> give you the equivalent

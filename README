@@ -1,4 +1,4 @@
-Lingua/Zompist/Cadhinor version 0.03
+Lingua/Zompist/Cadhinor version 0.04
 =====================================
 
 Lingua::Zompist::Cadhinor is a module which allows you to inflect Cadhinor
@@ -11,14 +11,11 @@ adverbs from them. Finally, there are several functions to inflect verbs,
 depending on the aspect, mood, and tense, and a function to form the
 participles of a verb.
 
-CHANGES FROM VERSION 0.02
+CHANGES FROM VERSION 0.03
 
-The paradigmatic verbs have changed to match those on native.htm as of
-2001-11-14. The problem was that out of five paradigmatic verbs, four
-were irregular (oops).
+Two minor nits in the documentation. No changes to code or tests.
 
-Also, Mark had got the -ER and -IR conjugations mixed up a bit and he
-fixed those recently; this version tracks those changes.
+For changes in previous versions, see the "Changes" file.
 
 INSTALLATION
 

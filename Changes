@@ -1,5 +1,8 @@
 Revision history for Perl extension Lingua::Zompist::Cadhinor.
 
+0.04 2001-11-15
+	- minor documentation nits. No changes to code or tests.
+
 0.03 2001-11-14
 	- fixed -ER and -IR conjugations (the endings had become
 	interchanged in a couple of cases)
