@@ -1,0 +1,8 @@
+Revision history for Perl extension Lingua::Zompist::Kebreni.
+
+0.01  Sun Sep 23 08:14:56 2001
+	- original version; created by h2xs 1.21 with options
+		-A -X -n Lingua::Zompist::Kebreni
+
+0.4   2001-09-23
+        - copied from Kebreni.pm v0.3 (working copy) and tidied up slightly
